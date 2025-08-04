@@ -1,72 +1,98 @@
 # 🧪 TestGhost
 
-**TestGhost** is a QA consulting brand specializing in **end-to-end automation, scalable CI/CD integrations, and elite-quality release strategy.** Whether you're a Series A startup or a global platform, we plug into your workflow and **elevate your test strategy from chaos to clarity.**
+**Modern QA. Surgical, scalable, relentless.**
+
+TestGhost is a QA consulting brand specializing in test automation, CI/CD integration, and enterprise-grade quality engineering. Whether you’re a lean startup or a complex multi-team org, we embed directly into your workflow and level up every layer of your release strategy.
+
+---
+
+## 🏷️ Certifications & Capabilities
+
+![Cypress Certified](https://img.shields.io/badge/Cypress-Certified-brightgreen)
+![CI/CD Ready](https://img.shields.io/badge/CI/CD-Integrated-blue)
+![DevOps Friendly](https://img.shields.io/badge/DevOps-Compatible-yellow)
+![SOC 2 Conscious](https://img.shields.io/badge/SOC2-Ready-critical)
+![QA-as-a-Service](https://img.shields.io/badge/QA-as--a--Service-orange)
+![Cross-Platform](https://img.shields.io/badge/Cross--Platform-Web%2C%20Mobile%2C%20OTT-informational)
 
 ---
 
 ## 🔧 What We Do
 
-### ✅ Full QA Buildouts  
-- **Web-based test automation**  
-  - Frameworks: Cypress, Playwright, Selenium  
-  - Cross-browser testing on Mac, Windows, and Linux  
-  - Manual test suites with repeatable coverage for critical flows  
+### ✅ End-to-End QA Buildouts
 
-- **API & Backend testing**  
-  - Postman, Supertest, K6, custom REST validation suites  
-  - CI integration for automated regression and smoke checks
+**Web Automation**
+- Cypress, Playwright, Selenium frameworks
+- CI/CD embedded test suites
+- Cross-browser coverage (Mac, Windows, Linux)
 
-- **Mobile automation**  
-  - Native apps (iOS, Android) using Appium and platform-specific frameworks  
-  - Real device testing and cloud-based device farms (BrowserStack, Sauce Labs)
+**API & Backend Testing**
+- Supertest, Postman, K6, custom REST validators
+- Contract testing + schema validation
+- Pre-merge API guards in CI pipelines
 
-- **OTT & Connected Device Testing**  
-  - Deep experience across Apple TV, Roku, Fire TV  
-  - Automated and manual flows for streaming apps and device-specific UIs
+**Mobile Automation**
+- Appium, Espresso, XCUITest
+- Android & iOS real device testing
+- Cloud device labs (BrowserStack, Sauce Labs)
 
----
-
-## 🧠 Strategic QA Consulting  
-- Full QA stack audits & optimization plans  
-- GitHub Flow & PR automation refinement  
-- Merge rules, version tagging, CI hooks  
-- JIRA: release cycle design, bug workflows, Zephyr/TestRail/TestPad integration  
-- Release readiness protocols and quality gates
+**OTT & Smart Device Testing**
+- Roku, Fire TV, Apple TV
+- Voice remote input testing
+- Video streaming flow validation
 
 ---
 
-## 📄 Documentation & Process Engineering  
-- Live test plan writing, risk matrix design, exploratory charters  
-- Release runbooks and CI/CD documentation  
-- QA onboarding guides and internal tooling docs  
-- Fully versioned manual test suites for non-automatable flows
+### 🧠 Strategic QA Consulting
+
+- Full-stack QA audits + CI test coverage maps
+- GitHub flow optimization: PR automation, merge rules, CI hooks
+- JIRA architecture: Epics, QA workflow, bug triage protocols
+- Zephyr, TestRail, TestPad configuration & process design
+- Internal SOPs for release confidence and regression burn-downs
 
 ---
 
-## 👥 Hiring Support & Mentorship  
-- Interview support, team ramp-up, and candidate evaluation  
-- Internal QA guild creation and knowledge sharing structures  
-- Live training, shadowing, and exploratory testing sessions  
-- Bug bash facilitation & cross-team test culture building
+### 📄 Documentation & Engineering
+
+- Live test plan authorship
+- Risk matrices and exploratory charters
+- Version-controlled manual test suites
+- Onboarding kits for new QA and devs
+- Runbooks for releases, rollbacks, and hotfixes
 
 ---
 
-## 👻 About BuildGhost
+### 👥 Hiring Support & Internal Enablement
 
-We’re currently developing **BuildGhost** — a CLI-based QA bootstrapper for modern engineering orgs. It scaffolds frontend/backend test suites, generates CI configs, and includes optional AI-assisted utilities for accelerating test creation.
-
-> Coming soon at [**buildghost.dev**](https://buildghost.dev)
-
----
-
-## 🌐 Live Site  
-→ [**testghost.com**](https://testghost.com) _(launching soon)_
+- QA team evaluation, hiring loop design, candidate screening
+- QA guild creation for long-term organizational knowledge
+- Live onboarding, mentoring, exploratory coaching
+- Bug bash facilitation & cross-team test culture development
 
 ---
 
-## 📬 Contact  
-🔒 Company email setup in progress. Reach out via LinkedIn or our site for now.
+## ⚙️ About BuildGhost
+
+**BuildGhost** is our upcoming CLI tool for bootstrapping test infrastructure.  
+It generates frontend/backend test scaffolding, CI configs, and includes optional AI-powered features for accelerated coverage.
+
+Coming soon at → [buildghost.dev](https://buildghost.dev)
 
 ---
 
-> _“We don’t just test — we haunt bugs to death.”_
+## 🌐 Live Site
+
+→ [testghost.com](https://testghost.com) 
+→ Includes case studies, demo videos, and contact portal
+
+---
+
+## 📬 Contact
+
+🔒 Official email address in progress  
+For now: reach out via GitHub, LinkedIn, or the website
+
+---
+
+**Modern QA. Surgical, scalable, relentless.**
