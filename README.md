@@ -1,4 +1,4 @@
-# 🧪 TestGhost
+# TestGhost
 
 **Modern QA. Surgical, scalable, relentless.**
 
