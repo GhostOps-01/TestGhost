@@ -1,70 +1,162 @@
-<meta property="og:image" content="assets/og-image.png" />
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="TestGhost – Lightning-fast QA automation consulting.">
-  <meta property="og:title" content="TestGhost – QA Consulting">
-  <meta property="og:image" content="/assets/og-image.png">
-  <meta property="og:description" content="Elite QA automation frameworks built fast. GhostOps-powered.">
-  <title>TestGhost – QA Consulting</title>
+  <title>TestGhost</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" />
 </head>
-
 <body>
-  <header>
-    <img src="assets/logo.png" alt="TestGhost logo" class="logo" />
-    <h1>TestGhost</h1>
-    <p class="tagline">"You don’t know where the break is. I already fixed it."</p>
-  </header>
+  <button id="modeToggle" class="mode-toggle">Switch to Client Mode 🧑‍💼</button>
+  <button class="hamburger" id="hamburger">&#9776;</button>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="examples.html">Examples</a>
+  <a href="contact.html">Contact</a>
+</div>
+ 
+  <nav class="nav-bar fade-in">
+    <a href="index.html" class="logo-text">TESTGHOST</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="examples.html">Examples</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
 
-  <main>
-    <section>
-      <h2>What is TestGhost?</h2>
-      <p>
-        TestGhost is a US-based elite QA consulting unit led by Mark Rosenthal — an automation engineer with 9+ years of experience building robust QA pipelines across web, mobile, and OTT.
-        Whether you're just getting started or scaling chaos, we ghost in and fix it.
-      </p>
-    </section>
+  <div class="container">
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
+      <img src="assets/testghost_header.png" alt="TestGhost Hero" style="max-width: 100%; height: auto;" />
+    </div>
 
-    <section>
-      <h2>Core Services</h2>
-      <ul>
-        <li>⚙️ Custom Cypress / Playwright automation frameworks</li>
-        <li>🌐 Backend & API test coverage (Postman, Supertest)</li>
-        <li>📱 Mobile web testing (iOS/Android, WebView, responsive)</li>
-        <li>📺 OTT platform QA (Roku, FireTV, Apple TV)</li>
-        <li>🚀 CI/CD integration: GitHub Actions, Jenkins, CircleCI</li>
-        <li>🧪 Load testing (k6, JMeter), Zephyr / TestRail test suite buildouts</li>
-        <li>👥 QA hiring, onboarding, and team mentorship</li>
-      </ul>
-    </section>
+    <h2>About TestGhost</h2>
+    <p>
+      TestGhost is a US-based QA consulting firm founded by Mark Rosenthal, a senior automation engineer with over 9 years of experience in designing resilient test frameworks and deployment pipelines.
+    </p>
+    <p>
+      From greenfield startups to enterprise-scale infrastructure, TestGhost seamlessly embeds with your team to identify risk, automate coverage, and accelerate delivery across web, mobile, and OTT platforms.
+    </p>
+    <p>
+      We’re also building <strong>QAxAI</strong> — an industry-shifting toolset engineered to eliminate hours of QA toil. Think auto-tagging DOM structures with <code>ScrapeTag</code>, or smart PR review bots that detect front/back-end changes, check for test gaps, and generate complete test cases with AI-injected coverage.
+    </p>
+    <p>
+      These tools aren’t just ideas — they’re being battle-tested for internal rollout now, with <strong>BuildGhost</strong> serving as the backbone of our AI-driven QA automation ecosystem.
+    </p>
 
-    <section>
-      <h2>Why TestGhost?</h2>
-      <ul>
-        <li>🧠 Senior-level consulting with solo-squad firepower</li>
-        <li>📄 Clear documentation & zero-fluff communication</li>
-        <li>📊 Release flow optimization that actually works</li>
-        <li>🔍 We don’t just test — we break, analyze, and refine</li>
-      </ul>
-    </section>
+    <h2>Core Capabilities</h2>
+    <ul>
+      <li>Custom-built Cypress and Playwright frameworks</li>
+      <li>Comprehensive backend and API testing (Postman, Supertest)</li>
+      <li>Cross-device mobile and WebView validation (iOS & Android)</li>
+      <li>OTT coverage: Roku, Apple TV, FireTV</li>
+      <li>CI/CD pipeline integration with GitHub Actions, Jenkins, CircleCI, AWS, GCP etc.</li>
+      <li>Scalable load testing with k6 and JMeter</li>
+      <li>QA hiring strategy, onboarding flows, and team mentorship</li>
+    </ul>
+    <h2>Tools & Tech</h2>
+    <p>These are just a few of the platforms, languages, and services I’ve worked with across automation, CI/CD, test planning, and delivery. Top-tier tools appear largest — the further down the stack, the lighter the lift.</p>
+    
+    <div class="tool-stack">
+      <!-- Top tier -->
+      <span class="tool t-xl">Cypress</span>
+      <span class="tool t-xl">Playwright</span>
+      <span class="tool t-xl">Appium</span>
+      <span class="tool t-xl">GitHub Actions</span>
+      <span class="tool t-xl">Git Flow</span>
+      
+      <!-- High tier -->
+      <span class="tool t-lg">Postman</span>
+      <span class="tool t-lg">Supertest</span>
+      <span class="tool t-lg">Python</span>
+      <span class="tool t-lg">JavaScript</span>
+      <span class="tool t-lg">CI/CD</span>
+      <span class="tool t-lg">Jenkins</span>
+      <span class="tool t-lg">CircleCI</span>
+    
+      <!-- Mid tier -->
+      <span class="tool t-md">TestRail</span>
+      <span class="tool t-md">Xray</span>
+      <span class="tool t-md">Testpad</span>
+      <span class="tool t-md">Confluence</span>
+      <span class="tool t-md">JIRA</span>
+      <span class="tool t-md">Segment</span>
+      <span class="tool t-md">Stripe</span>
+      <span class="tool t-md">Flagpole</span>
+      <span class="tool t-md">Runscope</span>
+      <span class="tool t-md">GCP</span>
+      <span class="tool t-md">AWS</span>
+    
+      <!-- Low tier -->
+      <span class="tool t-sm">Slack</span>
+      <span class="tool t-sm">Ghost Inspector</span>
+      <span class="tool t-sm">Bitbucket</span>
+      <span class="tool t-sm">C# (ramping up)</span>
+    </div>
+   
+    </div>
 
-    <section class="contact">
-      <h2>Let’s Talk</h2>
-      <p>Site powered by <code>buildghost.dev</code> — launching soon.</p>
-      <p>In the meantime, DM <a href="https://github.com/realmookulus">@realmookulus</a> or email coming soon.</p>
-    </section>
-  </main>
+    <h2>Why TestGhost?</h2>
+    <ul>
+      <li>Senior-level strategy with hands-on implementation</li>
+      <li>Zero-fluff documentation and direct engineer-to-engineer support</li>
+      <li>Track record of measurable improvement in velocity and release stability</li>
+      <li>Transparent communication and embedded reporting</li>
+    </ul>
+
+    <h2>Let’s Connect</h2>
+    <p>
+      <strong>BuildGhost</strong> is the home for our upcoming suite of QAxAI tools, launching soon via <strong>buildghost.dev</strong>.<br />
+      For inquiries or collaboration, check the <a href="contact.html">Contact</a> page.
+    </p>
+  </div>
 
   <footer>
-    <p>© 2025 TestGhost. All rights reserved.</p>
+    <p>© 2025 TestGhost | BuildGhost. All rights reserved.</p>
   </footer>
+
+  <!-- Scroll-triggered animation -->
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    document.querySelectorAll('.tool').forEach(tool => {
+      observer.observe(tool);
+    });
+  </script>
+  <script>
+    const burger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+  
+    burger.addEventListener('click', () => {
+      mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
+ <script>
+  const toggleBtn = document.getElementById('modeToggle');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const storedMode = localStorage.getItem('theme');
+
+  const setTheme = (mode) => {
+    document.body.classList.toggle('light-theme', mode === 'light');
+    toggleBtn.textContent = mode === 'light' ? 'Switch to Dev Mode 💻' : 'Switch to Client Mode 🧑‍💼';
+    localStorage.setItem('theme', mode);
+  };
+
+  const initialMode = storedMode || (prefersDark ? 'dark' : 'light');
+  setTheme(initialMode);
+
+  toggleBtn.addEventListener('click', () => {
+    const isLight = document.body.classList.contains('light-theme');
+    setTheme(isLight ? 'dark' : 'light');
+  });
+</script>
 </body>
 </html>
