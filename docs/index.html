@@ -5,450 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>TestGhost – Bulletproof QA Automation</title>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"/>
-    <style>
-      :root {
-        --bg: #1c1c24;
-        --text: #f1f1f1;
-        --accent: #b9ff63;
-        --nav-green: #b9ff63;
-        --hero-green: #b9ff63;
-        --hamburger: #b9ff63;
-        --dot: #b9ff63;
-        --line: #39393f;
-      }
-      [data-theme="light"] {
-        --bg: #fff;
-        --text: #111;
-        --accent: #111;
-        --nav-green: #111;
-        --hero-green: #111;
-        --hamburger: #111;
-        --dot: #111;
-        --line: #ddd;
-      }
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: system-ui, sans-serif;
-        background-color: var(--bg);
-        color: var(--text);
-        text-align: center;
-      }
-      .nav-header {
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        background: #18181d;
-        height: 56px;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid #222;
-        box-shadow: 0 1px 6px 0 rgba(0,0,0,0.12);
-      }
-      [data-theme="light"] .nav-header {
-        background: #fff;
-        border-bottom: 1px solid #eee;
-      }
-      .nav-content {
-        display: flex;
-        align-items: center;
-        height: 56px;
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        justify-content: flex-start;
-      }
-      .nav-left {
-        display: flex;
-        align-items: center;
-      }
-      .hamburger {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        cursor: pointer;
-        width: 32px;
-        height: 32px;
-        margin-right: 18px;
-        transition: transform 0.3s cubic-bezier(.4,2,.3,1);
-        will-change: transform;
-        outline: none;
-      }
-      @media (hover: hover) and (pointer: fine) {
-        .hamburger:hover {
-          transform: rotateY(180deg);
-        }
-      }
-      .hamburger span {
-        display: block;
-        width: 26px;
-        height: 4px;
-        background: var(--hamburger);
-        border-radius: 2px;
-        margin: 3px 0;
-        transition: 0.3s;
-      }
-      .logo-flex {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 38px;
-        line-height: 1;
-      }
-      .logo-text {
-        font-family: system-ui, sans-serif;
-        font-size: 1.19rem;
-        font-weight: 500;
-        letter-spacing: 1.2px;
-        color: var(--text);
-        text-align: left;
-        text-transform: uppercase;
-        user-select: none;
-        margin-bottom: 2px;
-        padding: 0;
-        line-height: 1.09;
-      }
-      .logo-sub {
-        font-size: 0.8rem;
-        font-family: system-ui, sans-serif;
-        font-weight: 400;
-        color: var(--text);
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        padding: 0;
-        margin: 0;
-        line-height: 1;
-      }
-      .nav-overlay {
-        position: fixed;
-        top: 18px;
-        left: 18px;
-        width: 210px;
-        min-width: 170px;
-        background: #23232a;
-        z-index: 2000;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        border-radius: 13px;
-        box-shadow: 0 6px 28px 0 rgba(0,0,0,0.21);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.23s, transform 0.23s;
-        padding: 0;
-        border: 1.5px solid #3c3c3c;
-        transform: scale(0.96);
-        min-height: 300px;
-      }
-      [data-theme="light"] .nav-overlay {
-        background: #fff;
-        border: 1.5px solid #eee;
-        box-shadow: 0 6px 28px 0 #0001;
-      }
-      .nav-overlay.open {
-        opacity: 1;
-        pointer-events: auto;
-        transform: scale(1.01);
-      }
-      .nav-link {
-        font-family: 'Anton', sans-serif;
-        font-size: 1.13rem;
-        color: var(--nav-green);
-        padding: 13px 24px 11px 22px;
-        margin: 0;
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 1.2px;
-        transition: color 0.18s, background 0.15s;
-        display: block;
-        border-bottom: 1px solid #31313a;
-        width: 100%;
-        text-align: left;
-      }
-      [data-theme="light"] .nav-link {
-        border-bottom: 1px solid #ddd;
-      }
-      .nav-link:last-child {
-        border-bottom: none;
-      }
-      .nav-link:hover {
-        color: #333;
-        background: #f6f6f6;
-      }
-      .nav-close {
-        position: absolute;
-        top: 6px;
-        right: 13px;
-        font-size: 1.3rem;
-        color: var(--nav-green);
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-family: 'Anton', sans-serif;
-        z-index: 3;
-        padding: 0 4px;
-        line-height: 1;
-      }
-      /* TINY SWITCH */
-      .nav-theme-toggle-tiny {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* <-- Center the toggle in hamburger */
-        padding: 0 0 14px 0;
-        margin-top: auto;
-        margin-bottom: 0;
-      }
-      .tiny-labels {
-        display: flex;
-        width: 38px;
-        justify-content: space-between;
-        margin-bottom: 0;
-        user-select: none;
-      }
-      .tiny-label {
-        font-size: 0.60rem;
-        font-family: system-ui, sans-serif;
-        color: #888;
-        opacity: 0.6;
-        text-transform: uppercase;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        transition: color 0.12s, opacity 0.12s;
-      }
-      .tiny-label.active {
-        color: var(--dot);
-        opacity: 1;
-        font-weight: 700;
-        text-shadow: 0 0 4px var(--dot);
-      }
-      .tiny-switch {
-        width: 34px;
-        height: 10px;
-        background: var(--line);
-        border-radius: 8px;
-        position: relative;
-        cursor: pointer;
-        margin-top: 1px;
-        margin-bottom: 0;
-        box-sizing: border-box;
-      }
-      .tiny-dot {
-        position: absolute;
-        top: -2.5px;
-        left: 1px;
-        width: 13px;
-        height: 13px;
-        border-radius: 50%;
-        background: var(--dot);
-        box-shadow: 0 0 4px var(--dot), 0 0 1.5px #000;
-        transition: left 0.18s cubic-bezier(.72,0,.17,1), background 0.16s;
-      }
-      .tiny-switch.light .tiny-dot {
-        left: 20px;
-        background: var(--dot);
-      }
-      .nav-spacer {
-        height: 56px;
-        width: 100%;
-      }
-      .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding-left: 32px;
-        padding-right: 32px;
-        box-sizing: border-box;
-      }
-      @media (max-width: 600px) {
-        .container {
-          padding-left: 14px;
-          padding-right: 14px;
-        }
-        .nav-overlay {
-          left: 8px;
-          top: 8px;
-          width: 93vw;
-          min-width: 0;
-          padding: 0;
-        }
-        .logo-flex {
-          height: 32px;
-        }
-      }
-      .hero {
-        padding: 60px 0 30px;
-      }
-      .hero img {
-        max-width: 410px;
-        width: 100%;
-        height: auto;
-        margin-bottom: 32px;
-      }
-      h1, h2, h3 {
-        font-family: 'Anton', sans-serif;
-        text-transform: uppercase;
-        margin: 0 0 20px;
-        letter-spacing: 1px;
-      }
-      .why {
-        color: var(--hero-green);
-      }
-      .section {
-        padding: 40px 0;
-      }
-      p {
-        font-size: 1.1rem;
-        line-height: 1.6;
-        margin-bottom: 20px;
-      }
-      .hero-tagline {
-        font-size: 2rem;
-        font-family: 'Anton', sans-serif;
-        color: var(--hero-green);
-        margin-bottom: 18px;
-        margin-top: 0;
-        letter-spacing: 1.3px;
-        text-transform: uppercase;
-      }
-      [data-theme="light"] .hero-tagline,
-      [data-theme="light"] .why {
-        color: #111;
-      }
-      .hero-desc {
-        font-size: 1.16rem;
-        font-style: italic;
-        margin-bottom: 0;
-        margin-top: 0;
-      }
-      footer {
-        background: #111117;
-        padding: 40px 20px;
-        margin-top: 60px;
-      }
-      [data-theme="light"] footer {
-        background: #f5f5f5;
-      }
-      .footer-logo img {
-        max-width: 220px;
-        margin-bottom: 20px;
-      }
-      .footer-text {
-        max-width: 700px;
-        margin: 0 auto;
-        color: #aaa;
-        font-size: 0.95rem;
-      }
-      [data-theme="light"] .footer-text {
-        color: #333;
-      }
-      .contact-header {
-        color: var(--hero-green);
-        font-family: 'Anton', sans-serif;
-        letter-spacing: 1.2px;
-      }
-      [data-theme="light"] .contact-header {
-        color: #111;
-      }
-      .contact-input::placeholder,
-      .contact-textarea::placeholder {
-        color: #bbb;
-        opacity: 0.55;
-        font-style: italic;
-        font-family: system-ui, sans-serif;
-        font-size: 0.97rem; /* smaller, more premium */
-        letter-spacing: 0.2px;
-      }
-      .contact-input,
-      .contact-textarea {
-        background: #23232a;
-        border: 1.5px solid #333;
-        color: var(--text);
-        font-family: system-ui, sans-serif;
-        border-radius: 7px;
-        transition: border 0.18s;
-      }
-      .contact-input:focus,
-      .contact-textarea:focus {
-        border-color: var(--hero-green);
-        outline: none;
-      }
-      @media (max-width: 700px) {
-        .contact-form {
-          flex-direction: column;
-          gap: 18px;
-        }
-      }
-      .contact-bg-premium {
-        width: 100vw;
-        min-height: 0;
-        background: url('./assets/testghost_contact_background.png') center top/cover no-repeat;
-        display: flex;
-        justify-content: flex-end; /* <-- shift form right */
-        align-items: center;
-        padding: 10px 0;
-        position: relative;
-        margin-left: calc(-50vw + 50%);
-        margin-right: calc(-50vw + 50%);
-      }
-      .contact-form-premium {
-        background: rgba(28,28,36,0.72);
-        box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(185,255,99,0.08);
-        border-radius: 18px;
-        padding: 0 24px;
-        display: flex;
-        gap: 32px;
-        width: 100%;
-        max-width: 700px;
-        backdrop-filter: blur(7px);
-        border: 1.5px solid #23243a;
-        align-items: center;
-        justify-content: center;
-        min-height: 0;
-        margin-right: 5vw; /* optional: add some right spacing */
-      }
-      .contact-form-group {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .contact-input,
-      .contact-textarea {
-        background: rgba(255,255,255,0.09);
-        border: none;
-        border-radius: 9px;
-        box-shadow: 0 2px 8px #0002 inset;
-        color: var(--text);
-        font-family: system-ui, sans-serif;
-        font-size: 1.13rem;
-        padding: 12px 14px;
-        margin-bottom: 0;
-        transition: box-shadow 0.18s, background 0.18s;
-      }
-      .contact-input:focus,
-      .contact-textarea:focus {
-        background: rgba(185,255,99,0.12);
-        box-shadow: 0 0 0 2px var(--hero-green) inset;
-        outline: none;
-      }
-      .contact-input::placeholder,
-      .contact-textarea::placeholder {
-        color: #bbb;
-        opacity: 0.7;
-        font-style: italic;
-        font-family: system-ui, sans-serif;
-      }
-      @media (max-width: 700px) {
-        .contact-form-premium {
-          flex-direction: column;
-          gap: 18px;
-          padding: 0 8px;
-        }
-      }
+    <link rel="stylesheet" href="style.css">
+  </head>
+<form
+    class="contact-form-premium"
+    action="https://formsubmit.co/buildghost.dev@gmail.com"
+    method="POST"
+  >
+    <div class="contact-form-group">
+      <label for="contact-email" class="contact-label" style="display:none;">Your email</label>
+      <input
+        id="contact-email"
+        type="email"
+        name="email"
+        class="contact-input"
+        placeholder="Your email"
+        required
+      />
+    </div>
+    <div class="contact-form-group">
+      <label for="contact-message" class="contact-label" style="display:none;">Message</label>
+      <textarea
+        id="contact-message"
+        name="message"
+        class="contact-textarea"
+        placeholder="What can TestGhost do for you?"
+        required
+      ></textarea>
+    </div>
+    <input type="hidden" name="_captcha" value="false">
+    <!-- Optional: <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html"> -->
+    <button type="submit" class="contact-submit">Send</button>
+  </form>
+</div>
     </style>
   </head>
   <body>
@@ -465,7 +54,6 @@
             <span class="logo-sub">QA CONSULTING</span>
           </div>
         </div>
-        <!-- NAV BAR THEME TOGGLE (desktop) -->
         <div class="nav-theme-toggle-tiny nav-theme-toggle-desktop" style="margin-left:auto; display:none;">
           <div class="tiny-labels">
             <span class="tiny-label active" id="tinyDarkLabelDesktop">Dark</span>
@@ -498,14 +86,49 @@
     </nav>
     <div class="nav-spacer"></div>
     <div class="container">
+      <!-- Updated Hero Section -->
       <div class="hero" id="home">
-        <img src="./assets/testghost_dark_alt.png" alt="TestGhost Hero Logo" id="heroImage"/>
+        <img src="./assets/testghost_dark_alt.png" alt="TestGhost Hero Logo" id="heroImage">
         <div class="hero-tagline">Test Like a Ghost, Ship Like a Machine</div>
         <p class="hero-desc">Automation-led test strategy for high-velocity teams.</p>
       </div>
       <div class="section" id="pricing">
         <h2>Pricing</h2>
-        <p>Contact us for a custom quote tailored to your team's needs.</p>
+        <div class="pricing-container">
+          <div class="pricing-card">
+            <h3>QA Audit / Jumpstart</h3>
+            <p class="price">$1,400</p>
+            <div class="pricing-details">
+              <p>1-week engagement</p>
+              <p>Full QA/process audit</p>
+              <p>Test coverage + risk report</p>
+              <p>Detailed recommendations deck</p>
+              <p>Live stakeholder review session</p>
+            </div>
+            </div>
+          </div>
+          <div class="pricing-card">
+            <h3>Automation Sprint</h3>
+            <p class="price">$3,250</p>
+            <div class="pricing-details">
+              <p>2-week project</p>
+              <p>Custom Cypress/Playwright setup</p>
+              <p>Up to 15 critical flow tests automated</p>
+              <p>CI/CD pipeline integration</p>
+              <p>Docs + engineer onboarding</p>
+            </div>
+          </div>
+          <div class="pricing-card">
+            <h3>Ongoing QA Partner</h3>
+            <p class="price">$90/hr</p>
+            <div class="pricing-details">
+              <p>Flexible, as-needed support</p>
+              <p>Bug bashes, test reviews, coverage audits</p>
+              <p>Test suite maintenance & scaling</p>
+              <p>On-call Slack/Zoom support</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="section" id="coverage">
         <h2>Real Coverage, Real Speed</h2>
@@ -523,22 +146,36 @@
     </div>
     <!-- PRE-FOOTER CONTACT SECTION -->
     <div id="contactPreFooter" class="contact-bg-premium">
-      <form class="contact-form contact-form-premium" autocomplete="off">
+      <form
+        class="contact-form-premium"
+        action="https://formsubmit.co/buildghost.dev@gmail.com"
+        method="POST"
+      >
         <div class="contact-form-group">
+          <label for="contact-email" class="contact-label" style="display:none;">Your email</label>
           <input
+            id="contact-email"
             type="email"
+            name="email"
             class="contact-input"
             placeholder="Your email"
+            required
           />
         </div>
         <div class="contact-form-group">
+          <label for="contact-message" class="contact-label" style="display:none;">Message</label>
           <textarea
+            id="contact-message"
+            name="message"
             class="contact-textarea"
-            rows="4"
             placeholder="What can TestGhost do for you?"
+            required
           ></textarea>
         </div>
+        <input type="hidden" name="_captcha" value="false">
+        <button type="submit" class="contact-submit">Send</button>
       </form>
+    </div>
     </div>
     <footer id="contact">
       <div class="footer-logo">
@@ -557,29 +194,23 @@
       const hamburger = document.getElementById("hamburgerMenu");
       const overlay = document.getElementById("navOverlay");
       const closeBtn = document.getElementById("closeNav");
+
       function openNav() {
-        overlay.classList.add("open");
+        if (overlay) {
+          overlay.classList.add("open");
+        }
         document.body.style.overflow = "hidden";
       }
+
       function closeNav() {
         overlay.classList.remove("open");
         document.body.style.overflow = "";
       }
+
       hamburger.addEventListener("click", openNav);
-      hamburger.addEventListener("keydown", e => {
-        if (e.key === "Enter" || e.key === " ") openNav();
-      });
       closeBtn.addEventListener("click", closeNav);
-      document.addEventListener("mousedown", function(e) {
-        if (
-          overlay.classList.contains("open") &&
-          !overlay.contains(e.target) &&
-          !hamburger.contains(e.target)
-        ) {
-          closeNav();
-        }
-      });
-      // ...rest of your JS...
+
+      // Remove this placeholder if no additional JS is needed
     </script>
   </body>
 </html>
