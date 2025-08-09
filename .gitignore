@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Node/Next
+node_modules/
+.next/
+apps/**/node_modules/
+apps/**/.next/
+dist/
+out/
