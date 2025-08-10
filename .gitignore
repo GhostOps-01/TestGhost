@@ -9,3 +9,4 @@ apps/**/.next/
 dist/
 out/
 apps/playbook/
+.DS_Store
