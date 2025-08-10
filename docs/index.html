@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TestGhost – Bulletproof QA Automation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- HEADER / NAV -->
+
+    <button id="openNav" class="hamburger" aria-label="Open navigation menu">
+      ☰
+    </button>
+    <header class="nav-header">
+      <div class="nav-content">
+        <div class="nav-left">
+          <button class="hamburger" id="hamburgerMenu" aria-label="Open navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="logo-flex">
+            <span class="logo-text">TESTGHOST</span>
+            <span class="logo-sub">QA CONSULTING</span>
+          </div>
+        </div>
+        <div class="nav-theme-toggle-tiny nav-theme-toggle-desktop" style="margin-left:auto; display:none;">
+          <div class="tiny-labels">
+            <span class="tiny-label active" id="tinyDarkLabelDesktop">Dark</span>
+            <span class="tiny-label">Light</span>
+          </div>
+          <div class="tiny-switch" id="tinySwitchDesktop">
+            <div class="tiny-dot"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- BEGIN NAV OVERLAY -->
+<nav class="nav-overlay" id="navOverlay" aria-label="Site menu">
+  <button class="nav-close" id="closeNav" aria-label="Close navigation menu">&times;</button>
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="#pricing" class="nav-link" data-scroll>Pricing</a>
+  <a href="#why" class="nav-link" data-scroll>Why TestGhost</a>
+  <a href="#coverage" class="nav-link" data-scroll>Coverage</a>
+  <a href="#training" class="nav-link" data-scroll>Training</a>
+  <a href="examples.html" class="nav-link">Examples</a>
+  <a href="#contact" class="nav-link" data-scroll>Contact</a>
+  <div class="nav-theme-toggle-tiny">
+    <div class="tiny-labels">
+      <span class="tiny-label active" id="tinyDarkLabel">Dark</span>
+      <span class="tiny-label">Light</span>
+    </div>
+    <div class="tiny-switch" id="tinySwitch">
+      <div class="tiny-dot"></div>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-spacer"></div>
+<!-- END NAV OVERLAY -->
+
+    <!-- MAIN -->
+    <main>
+      <!-- FULL-SCREEN HERO -->
+      <section id="hero" class="hero-section">
+        <div class="hero-content">
+          <img src="./assets/testghost_dark_alt.png" alt="TestGhost" class="hero-image" />
+          <p class="hero-quote">“Test like a ghost. Ship like a machine.”</p>
+        </div>
+
+        <!-- Mobile scroll cue -->
+        <button id="scrollDownBtn" class="scroll-down-btn" aria-label="Scroll to next section">
+          <span class="caret">⌄</span>
+        </button>
+      </section>
+
+      <!-- COVERAGE -->
+      <section class="section container" id="coverage">
+        <h2>Real Coverage, Real Speed</h2>
+        <p>
+          Our CI-integrated test systems hit frontend, backend, and APIs. Built on Playwright, Cypress, Postman, and K6 –
+          and tailored for modern, fast-moving development teams who want their releases bulletproof.
+        </p>
+      </section>
+
+      <!-- TRAINING -->
+      <section class="section container" id="training">
+        <h2>Train Your Team, Boost Your Stack</h2>
+        <p>
+          We don't just test—we train. We onboard devs into Shift Left best practices, equip teams with debugging tools,
+          and build smart automation libraries that last.
+        </p>
+      </section>
+
+      <!-- PRICING (kept simple for now; we can convert to popup later) -->
+      <section class="section container" id="pricing">
+        <h2>Pricing</h2>
+        <p class="section-sub">We offer flexible tiers to suit your needs.</p>
+        <div class="pricing-container">
+          <article class="pricing-card">
+            <h3>QA Audit / Jumpstart</h3>
+            <p class="price">$1,400</p>
+            <div class="pricing-details">
+              <p>1-week engagement</p>
+              <p>Full QA/process audit</p>
+              <p>Test coverage + risk report</p>
+              <p>Recommendations deck</p>
+              <p>Stakeholder review session</p>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <h3>Automation Sprint</h3>
+            <p class="price">$3,250</p>
+            <div class="pricing-details">
+              <p>2-week project</p>
+              <p>Cypress/Playwright setup</p>
+              <p>Up to 15 critical flow tests</p>
+              <p>CI/CD integration</p>
+              <p>Docs + onboarding</p>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <h3>Ongoing QA Partner</h3>
+            <p class="price">$90/hr</p>
+            <div class="pricing-details">
+              <p>Flexible support</p>
+              <p>Bug bashes, reviews, audits</p>
+              <p>Suite maintenance & scaling</p>
+              <p>On-call Slack/Zoom support</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- WHY -->
+      <section class="section container" id="why">
+        <h2 class="why">Why TestGhost</h2>
+        <p>
+          TestGhost is built by testers, for testers. We deliver bulletproof QA frameworks, custom automation tooling, and
+          in-depth coverage audits that scale with your stack.
+        </p>
+        <p>
+          Whether you're launching a new product or stabilizing a mature one, we help you build with confidence from commit to deploy.
+        </p>
+      </section>
+
+      <!-- CONTACT (full-width background lives ONLY here) -->
+      <section id="contactPreFooter" class="contact-bg-premium">
+        <!-- Optional floating label -->
+        <div class="contact-badge">CONTACT</div>
+      
+        <!-- Glass card wrapper -->
+        <div class="contact-card">
+          <form
+            class="contact-form-premium"
+            action="https://formsubmit.co/buildghost.dev@gmail.com"
+            method="POST"
+          >
+            <div class="contact-form-group">
+              <label for="contact-email" class="contact-label sr-only">Your email</label>
+              <input 
+                id="contact-email" 
+                type="email" 
+                name="email" 
+                class="contact-input" 
+                placeholder="Your email" 
+                required 
+              />
+            </div>
+      
+            <div class="contact-form-group">
+              <label for="contact-message" class="contact-label sr-only">Message</label>
+              <textarea 
+                id="contact-message" 
+                name="message" 
+                class="contact-textarea" 
+                placeholder="What can TestGhost do for you?" 
+                required
+              ></textarea>
+            </div>
+      
+            <input type="hidden" name="_captcha" value="false" />
+            <button type="submit" class="contact-submit">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="container">
+      <div class="footer-logo">
+        <img src="./assets/testghost_dark_alt.png" alt="TestGhost Dark Logo" id="footerLogo" />
+      </div>
+      <div class="footer-text">
+        <p>&copy; 2025 TestGhost. Built for confident, consistent QA launches. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- SCROLL TO TOP (desktop only; hidden by default) -->
+    <button id="scrollTopBtn" class="scroll-top" aria-label="Scroll to top">&#8593;</button>
+
+    <script>
+      // NAV
+      const hamburger = document.getElementById("hamburgerMenu");
+      const overlay = document.getElementById("navOverlay");
+      const closeBtn = document.getElementById("closeNav");
+      hamburger?.addEventListener("click", () => { overlay?.classList.add("open"); document.body.style.overflow = "hidden"; });
+      closeBtn?.addEventListener("click", () => { overlay?.classList.remove("open"); document.body.style.overflow = ""; });
+
+      // HERO mobile scroll cue
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("scrollDownBtn");
+        const next = document.querySelector("#coverage"); // scroll target = first section after hero
+
+        // Show button a bit after hero starts animating (matches CSS timing)
+        setTimeout(() => { if (btn) btn.style.opacity = "1"; }, 1100);
+
+        btn?.addEventListener("click", () => next?.scrollIntoView({ behavior: "smooth" }));
+      });
+    </script>
+  </body>
+</html>
