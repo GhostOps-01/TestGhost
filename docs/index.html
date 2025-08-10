@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>TestGhost – Bulletproof QA Automation</title>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+    <link rel="stylesheet" href="assets/css/style.css">  </head>
   <body>
     <!-- HEADER / NAV -->
 
@@ -202,24 +201,48 @@
     <!-- SCROLL TO TOP (desktop only; hidden by default) -->
     <button id="scrollTopBtn" class="scroll-top" aria-label="Scroll to top">&#8593;</button>
 
-    <script>
-      // NAV
-      const hamburger = document.getElementById("hamburgerMenu");
-      const overlay = document.getElementById("navOverlay");
-      const closeBtn = document.getElementById("closeNav");
-      hamburger?.addEventListener("click", () => { overlay?.classList.add("open"); document.body.style.overflow = "hidden"; });
-      closeBtn?.addEventListener("click", () => { overlay?.classList.remove("open"); document.body.style.overflow = ""; });
+     <script>
+  // --- NAV: start closed & wire up ---
 
-      // HERO mobile scroll cue
-      document.addEventListener("DOMContentLoaded", () => {
-        const btn = document.getElementById("scrollDownBtn");
-        const next = document.querySelector("#coverage"); // scroll target = first section after hero
+  // make sure it starts closed on first paint
+  const overlay = document.getElementById("navOverlay");
+  overlay?.classList.remove("open");
+  document.body.classList.remove("nav-open");
+  document.body.style.overflow = ""; // reset just in case
 
-        // Show button a bit after hero starts animating (matches CSS timing)
-        setTimeout(() => { if (btn) btn.style.opacity = "1"; }, 1100);
+  const hamburger = document.getElementById("hamburgerMenu");
+  const closeBtn  = document.getElementById("closeNav");
 
-        btn?.addEventListener("click", () => next?.scrollIntoView({ behavior: "smooth" }));
-      });
+  hamburger?.addEventListener("click", () => {
+    overlay?.classList.add("open");
+    document.body.classList.add("nav-open");
+    document.body.style.overflow = "hidden";
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    overlay?.classList.remove("open");
+    document.body.classList.remove("nav-open");
+    document.body.style.overflow = "";
+  });
+
+  // also close if user clicks outside the drawer (optional—only if overlay dims whole page)
+  overlay?.addEventListener("click", (e) => {
+    // only when clicking the background, not the drawer content
+    if (e.target === overlay) {
+      overlay.classList.remove("open");
+      document.body.classList.remove("nav-open");
+      document.body.style.overflow = "";
+    }
+  });
+
+  // --- HERO mobile scroll cue ---
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn  = document.getElementById("scrollDownBtn");
+    const next = document.querySelector("#coverage"); // first section after hero
+    setTimeout(() => { if (btn) btn.style.opacity = "1"; }, 1100);
+    btn?.addEventListener("click", () => next?.scrollIntoView({ behavior: "smooth" }));
+  });
     </script>
+    <script src="assets/js/main.js" defer></script>
   </body>
 </html>
