@@ -8,3 +8,4 @@ apps/**/node_modules/
 apps/**/.next/
 dist/
 out/
+apps/playbook/
