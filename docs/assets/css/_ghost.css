@@ -1,0 +1,188 @@
+.nav-overlay {
+    right: -100%;
+    width: 60%;
+    max-width: 280px;
+    transition: right 0.4s ease
+}
+.nav-overlay.open {
+    right: 0
+}
+
+/* --- Global container padding (desktop & mobile) --- */
+.container{padding:0 clamp(16px,4vw,40px)}
+
+/* --- Hero image bigger but still respectful --- */
+.hero-image{max-width:min(85vw,900px)}
+
+/* --- Footer logo sizing + slight nudge --- */
+.footer-logo img{max-width:260px;margin-top:6px;filter:drop-shadow(0 0 14px rgba(185,255,99,.35))}
+
+/* --- Drawer: slide-in from right on desktop; full-screen on mobile --- */
+.nav-overlay{right:-100%;width:60%;max-width:320px;height:100%;transition:right .35s ease;background:rgba(20,20,20,.7);backdrop-filter:blur(12px);box-shadow:-4px 0 20px rgba(0,255,100,.3);padding:2rem 1.25rem;display:flex;flex-direction:column;gap:1rem;align-items:flex-start;z-index:9999}
+.nav-overlay.open{right:0}
+@media (max-width:768px){.nav-overlay{left:0;right:0;width:100%;max-width:none;align-items:center;justify-content:center;padding:4rem 2rem}}
+
+/* --- Drawer link style (neon, centered on mobile) --- */
+.nav-link{font-size:1.15rem;color:#0f0;text-shadow:0 0 6px rgba(0,255,100,.8)}
+.nav-link:hover{transform:translateX(4px);color:#8fffba}
+@media (max-width:768px){.nav-link{font-size:1.35rem}}
+
+/* --- Add some breathing room in sections on mobile --- */
+@media (max-width:768px){.section{padding:44px 0}}
+
+/* --- Contact header strip (replaces busy bg) --- */
+.contact-header{display:flex;align-items:center;gap:12px;max-width:920px;margin:0 auto clamp(20px,4vw,28px);padding:8px 14px;border-radius:12px;background:rgba(18,18,18,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 0 0 1px rgba(255,255,255,.06) inset,0 0 18px rgba(185,255,99,.12)}
+.contact-header img{height:28px;width:auto;filter:drop-shadow(0 0 8px rgba(185,255,99,.35))}
+.contact-header .label{font-family:'Anton',sans-serif;letter-spacing:.04em;color:#cfff8c}
+
+/* --- Make sure the old full-bleed background is neutral --- */
+#contactPreFooter{padding:0}
+.contact-bg-premium{left:auto;right:auto;margin:0;width:auto;background:none;padding:clamp(36px,6vw,72px) clamp(16px,4vw,40px)}
+
+/* --- Global: consistent side padding (desktop & mobile) --- */
+.container{padding:0 clamp(18px,5vw,42px)}
+
+/* --- All headings uppercase + slight tracking --- */
+h1,h2,h3,h4,h5,h6{text-transform:uppercase;letter-spacing:.02em}
+
+/* --- Hero: logo bigger & quote tighter --- */
+.hero-image{max-width:min(88vw,980px)}
+.hero-quote{margin-top:.4rem}
+
+/* --- Sections: more breathing room --- */
+.section{padding:80px 0}
+@media(max-width:768px){.section{padding:56px 0}}
+
+/* --- Scroll cue: correct green + higher from bottom (safe-area aware) --- */
+.scroll-down-btn{bottom:calc(env(safe-area-inset-bottom,0px) + 22px)}
+.scroll-down-btn .caret{color:var(--nav-green)}
+
+/* --- Contact: hide old badge; center & size new header image; add spacing from WHY --- */
+.contact-badge{display:none!important}
+#contactPreFooter{margin-top:clamp(40px,6vw,84px)}
+.contact-header{display:flex;justify-content:center;align-items:center;margin:0 auto clamp(18px,4vw,28px);}
+.contact-header-img{display:block;height:clamp(42px,7vw,88px);width:auto;filter:drop-shadow(0 0 10px rgba(185,255,99,.25))}
+
+/* --- Contact section surface (keep clean, no full-bleed bg) --- */
+.contact-bg-premium{left:auto;right:auto;margin:0;width:auto;background:none;padding:clamp(36px,6vw,72px) clamp(18px,5vw,42px)}
+/* =========================
+   GHOST FIX LAYER (safe overrides)
+   ========================= */
+/* General safety: prevent horizontal scroll from past experiments */
+html, body { overflow-x: hidden !important; }
+
+/* ---- NAV: stable, centered, space-between ---- */
+.nav-header { position: sticky; top: 0; left: 0; right: 0; width: 100%; z-index: 1000; background: var(--nav-background, #080808) !important; }
+.nav-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between !important; padding: 8px 16px; }
+.nav-left { display: flex; align-items: center; gap: 10px; }
+
+/* ---- HERO: desktop uses <img>, mobile switches to background (no extra <img>) ---- */
+.hero-section { min-height: 92vh; display: flex; align-items: center; justify-content: center; padding: 0; background: #000; }
+.hero-image { display: block; max-width: min(980px, 92vw); width: 100%; height: auto; margin: 0 auto; filter: drop-shadow(0 0 10px rgba(185,255,99,.45)); }
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .section { padding: 48px 0; }
+  h1 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  h2 { font-size: clamp(1.3rem, 6vw, 1.9rem); }
+  p  { font-size: 1rem; line-height: 1.55; }
+  /* Mobile hero: hide the img to avoid duplication and paint a background that fills */
+  .hero-section { min-height: 72vh; padding: 8px 0; background: #000 url('assets/img/testghost_dark_alt.png') center / cover no-repeat !important; }
+  .hero-image { display: none !important; }
+  .scroll-down-btn { opacity: 1; bottom: 14px; }
+}
+
+/* ---- PRICING: sleeker but safe ---- */
+.pricing-accordion { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+.pricing-item { border-radius: 14px; background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02)); box-shadow: 0 10px 28px rgba(0,0,0,.25), 0 0 0 1px rgba(0,255,136,.18) inset; overflow: hidden; transition: box-shadow .25s ease, transform .2s ease; }
+.pricing-item:hover { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(0,0,0,.32), 0 0 0 1px rgba(0,255,136,.24) inset; }
+.pricing-item summary { cursor: pointer; list-style: none; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 16px; padding: 1.05rem 1.3rem; color: var(--accent, #00ff88); font-weight: 600; }
+.pricing-item summary::-webkit-details-marker { display: none; }
+.pricing-item summary .summary-price { font-weight: 700; letter-spacing: .01em; color: #a3ffcd; }
+.pricing-item summary .summary-plus { font-size: 1.4rem; line-height: 1; opacity: .9; transition: transform .25s ease; }
+.pricing-item[open] summary { background: rgba(0,255,136,.08); }
+.pricing-item[open] summary .summary-plus { transform: rotate(45deg); }
+.pricing-body { padding: .3rem 1.3rem 1.1rem; }
+.pricing-body ul { margin: .6rem 0 0; padding-left: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: .45rem 1.2rem; }
+.pricing-body li { opacity: .95; }
+@media (max-width: 768px) { .pricing-body ul { grid-template-columns: 1fr; } }
+
+/* ---- FOOTER: true full-bleed, content centered ---- */
+footer { position: static !important; left: auto !important; right: auto !important; margin-left: 0 !important; margin-right: 0 !important; width: 100% !important; background: #222 !important; color: #aaa; padding: 24px 0; border-top: 1px solid #444; box-sizing: border-box; }
+.footer-logo, .footer-text { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+
+/* ===== GHOST-OPS DIAGNOSTIC LAYER (non-destructive) ===== */
+/* Ensure the ghost layer wins */
+:root{--tg-debug:1}
+
+/* --- Debug outlines so we see what the browser sees --- */
+.nav-header{outline:2px dashed rgba(0,255,136,.6) !important; outline-offset:-2px}
+.nav-content{outline:1px dotted rgba(0,255,136,.35) !important}
+.hero-section{outline:2px dashed rgba(255,255,0,.5) !important; outline-offset:-2px}
+.hero-image{outline:1px dotted rgba(255,255,0,.35) !important}
+footer{outline:2px dashed rgba(0,136,255,.55) !important; outline-offset:-2px}
+
+/* --- NAV: make layout stable without changing your HTML --- */
+.nav-header{position:sticky !important; top:0 !important; left:0; right:0; width:100% !important; z-index:1000; background:var(--nav-background,#080808) !important}
+.nav-content{max-width:1200px !important; margin:0 auto !important; display:flex !important; align-items:center !important; justify-content:space-between !important; padding:8px 16px !important}
+
+/* --- HERO: desktop uses <img>; mobile uses background image, no duplicate --- */
+.hero-section{min-height:92vh !important; display:flex !important; align-items:center !important; justify-content:center !important; padding:0 !important; background:#000 !important}
+.hero-image{display:block !important; max-width:min(980px,92vw) !important; width:100% !important; height:auto !important; margin:0 auto !important}
+@media (max-width:768px){
+  .container{padding:0 16px !important}
+  .section{padding:48px 0 !important}
+  /* Tighten hero, hide <img>, paint mobile bg */
+  .hero-section{min-height:72vh !important; padding:8px 0 !important; background:#000 url('assets/img/testghost_dark_alt.png') center / cover no-repeat !important}
+  .hero-image{display:none !important}
+  .scroll-down-btn{opacity:1 !important; bottom:14px !important}
+}
+
+/* --- FOOTER: force full-bleed, content centered --- */
+html,body{overflow-x:hidden !important}
+footer{position:static !important; left:auto !important; right:auto !important; margin:0 !important; width:100% !important; background:#222 !important; color:#aaa !important; padding:24px 0 !important; border-top:1px solid #444 !important; box-sizing:border-box !important}
+.footer-logo,.footer-text{max-width:1200px !important; margin:0 auto !important; padding:0 24px !important}
+
+
+/* ===== GHOST FIX LAYER (CSS-only) ===== */
+html,body{overflow-x:hidden!important}
+
+/* NAV: keep layout stable; hide duplicate brand on mobile */
+.nav-header{position:sticky;top:0;left:0;right:0;width:100%;z-index:1000;background:var(--nav-background,#080808)!important}
+.nav-content{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between!important;padding:8px 16px}
+@media(max-width:768px){header.nav-header img.nav-brand+img.nav-brand{display:none!important}}
+
+/* HERO: desktop uses <img>; mobile paints background (correct relative path!) */
+.hero-section{min-height:92vh;display:flex;align-items:center;justify-content:center;padding:0;background:#000}
+.hero-image{display:block;max-width:min(980px,92vw);width:100%;height:auto;margin:0 auto;filter:drop-shadow(0 0 10px rgba(185,255,99,.45))}
+@media(max-width:768px){
+  .container{padding:0 16px}
+  .section{padding:48px 0}
+  h1{font-size:clamp(1.6rem,7vw,2.2rem)}
+  h2{font-size:clamp(1.3rem,6vw,1.9rem)}
+  p{font-size:1rem;line-height:1.55}
+  /* key fix: path is relative to assets/css/_ghost.css -> use ../img/ */
+  .hero-section{min-height:68vh;padding:8px 0;background:#000 url('../img/testghost_dark_alt.png') center / cover no-repeat!important}
+  .hero-image{display:none!important}
+  .scroll-down-btn{opacity:1;bottom:14px}
+}
+
+/* PRICING polish (kept) */
+.pricing-accordion{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.pricing-item{border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.02));box-shadow:0 10px 28px rgba(0,0,0,.25),0 0 0 1px rgba(0,255,136,.18) inset;overflow:hidden;transition:box-shadow .25s ease,transform .2s ease}
+.pricing-item:hover{transform:translateY(-1px);box-shadow:0 16px 36px rgba(0,0,0,.32),0 0 0 1px rgba(0,255,136,.24) inset}
+.pricing-item summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:16px;padding:1.05rem 1.3rem;color:var(--accent,#00ff88);font-weight:600}
+.pricing-item summary::-webkit-details-marker{display:none}
+.pricing-item summary .summary-price{font-weight:700;letter-spacing:.01em;color:#a3ffcd}
+.pricing-item summary .summary-plus{font-size:1.4rem;line-height:1;opacity:.9;transition:transform .25s ease}
+.pricing-item[open] summary{background:rgba(0,255,136,.08)}
+.pricing-item[open] summary .summary-plus{transform:rotate(45deg)}
+.pricing-body{padding:.3rem 1.3rem 1.1rem}
+.pricing-body ul{margin:.6rem 0 0;padding-left:1rem;display:grid;grid-template-columns:1fr 1fr;gap:.45rem 1.2rem}
+.pricing-body li{opacity:.95}
+@media(max-width:768px){.pricing-body ul{grid-template-columns:1fr}}
+
+/* FOOTER: full-bleed, centered content */
+footer{position:static!important;margin:0!important;width:100%!important;background:#222!important;color:#aaa;padding:24px 0;border-top:1px solid #444;box-sizing:border-box}
+.footer-logo,.footer-text{max-width:1200px;margin:0 auto;padding:0 24px}
+

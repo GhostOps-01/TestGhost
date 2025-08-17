@@ -134,3 +134,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# local junk
+*.zip
+dedupe_report.csv
+.DS_Store
+**/.DS_Store

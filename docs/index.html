@@ -1,185 +1,155 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TestGhost – Bulletproof QA Automation</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TESTGHOST — QA Engineering on Demand</title>
+    <link rel="icon" href="assets/img/testghost_favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- HEADER / NAV -->
+    <header class="nav-header">
+      <div class="nav-content">
+        <a href="#top" aria-label="Home" class="brand">
+          <img class="nav-brand" src="assets/img/testghost_dark.png" alt="TESTGHOST — QA Engineering on Demand" />
+        </a>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet" />
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/style.css?v=4" />
-  <link rel="stylesheet" href="assets/css/_ghost.css" />
-</head>
-<body>
-
-  <!-- HEADER / NAV -->
-  <header class="nav-header">
-    <div class="nav-content">
-      <div class="nav-left">
-        <button class="hamburger" id="hamburgerMenu" aria-label="Open navigation menu">
+        <button class="hamburger" aria-controls="navOverlay" aria-expanded="false" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
-        <img class="nav-brand" src="assets/img/testghost_favicon.png" alt="TESTGHOST — QA Engineering on Demand" />
       </div>
+    </header>
 
-      <div class="nav-theme-toggle-tiny nav-theme-toggle-desktop" style="margin-left:auto; display:none;">
-        <div class="tiny-labels">
-          <span class="tiny-label active" id="tinyDarkLabelDesktop">Dark</span>
-          <span class="tiny-label">Light</span>
+    <!-- NAV OVERLAY -->
+    <nav class="nav-overlay" id="navOverlay" aria-label="Site menu" hidden>
+      <button class="nav-close-btn" aria-label="Close menu">×</button>
+      <a class="nav-link" href="#pricing">Pricing</a>
+      <a class="nav-link" href="#why">Why TestGhost</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+    <div class="nav-backdrop" id="navBackdrop" hidden></div>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero-section">
+        <div class="hero-content container">
+          <picture>
+            <!-- mobile first -->
+            <source media="(max-width: 768px)" srcset="assets/img/testghost_dark_alt.png" />
+            <!-- desktop -->
+            <img class="hero-image" src="assets/img/testghost_header.png" alt="TESTGHOST // QA Engineering on Demand" />
+          </picture>
+          <p class="hero-quote">“Test like a ghost. Ship like a machine.”</p>
         </div>
-        <div class="tiny-switch" id="tinySwitchDesktop">
-          <div class="tiny-dot"></div>
+
+        <button class="scroll-down-btn" aria-label="Scroll to content" data-scroll="#pricing">
+          <span class="caret">⌄</span>
+        </button>
+      </section>
+
+      <!-- WHY -->
+      <section class="section container" id="why">
+        <h2>Real Coverage, Real Speed</h2>
+        <p class="section-sub">
+          Our CI-integrated test systems hit frontend, backend, and APIs. Built on Playwright, Cypress, Postman, and K6 — and tailored for modern, fast-moving development teams who want their releases bulletproof.
+        </p>
+
+        <h2 style="margin-top:48px">Train Your Team, Boost Your Stack</h2>
+        <p class="section-sub">
+          We don’t just test—we train. We onboard devs into Shift Left best practices, equip teams with debugging tools, and build smart automation libraries that last.
+        </p>
+      </section>
+
+      <!-- PRICING -->
+      <section class="section container" id="pricing">
+        <h2>Pricing</h2>
+        <p class="section-sub">Choose the engagement that fits your needs.</p>
+
+        <div class="pricing-accordion">
+          <details class="pricing-item">
+            <summary>
+              <span>QA Audit / Jumpstart</span>
+              <span class="summary-price">$1,400</span>
+              <span class="summary-plus">+</span>
+            </summary>
+            <div class="pricing-body">
+              <ul>
+                <li>1-week engagement</li>
+                <li>Full QA/process audit</li>
+                <li>Test coverage + risk report</li>
+                <li>Recommendations deck</li>
+                <li>Stakeholder review session</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="pricing-item">
+            <summary>
+              <span>Automation Sprint</span>
+              <span class="summary-price">$3,250</span>
+              <span class="summary-plus">+</span>
+            </summary>
+            <div class="pricing-body">
+              <ul>
+                <li>Playwright/Cypress scaffolding</li>
+                <li>API smoke + load hooks</li>
+                <li>CI integration &amp; dashboards</li>
+                <li>Developer onboarding session</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="pricing-item">
+            <summary>
+              <span>Ongoing QA Partner</span>
+              <span class="summary-price">$90/hr</span>
+              <span class="summary-plus">+</span>
+            </summary>
+            <div class="pricing-body">
+              <ul>
+                <li>Dedicated QA engineer(s)</li>
+                <li>Release hardening</li>
+                <li>Regression automation</li>
+                <li>Performance &amp; security checks</li>
+              </ul>
+            </div>
+          </details>
         </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="section" id="contact">
+        <div class="contact-bg-premium">
+          <div class="contact-card">
+            <div class="contact-hero">
+              <img class="contact-hero-img" src="assets/img/testghost_contact_header.png" alt="Contact TestGhost"/>
+            </div>
+
+            <form class="contact-form-premium container" action="#" method="post" onsubmit="return false;">
+              <label class="contact-label" for="email">Your email</label>
+              <input id="email" class="contact-input" type="email" placeholder="Your email" required />
+              <label class="contact-label" for="msg">Message</label>
+              <textarea id="msg" class="contact-textarea" placeholder="What can TestGhost do for you?"></textarea>
+              <button class="contact-submit" type="submit">Send</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">
+        <img src="assets/img/testghost_footer_logo.png" alt="TestGhost Footer Logo" />
       </div>
-    </div>
-  </header>
-
-  <!-- NAV OVERLAY -->
-  <nav class="nav-overlay" id="navOverlay" aria-label="Site menu">
-    <button class="nav-close-btn" id="closeNav" aria-label="Close navigation menu">×</button>
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="#pricing" class="nav-link" data-scroll>Pricing</a>
-    <a href="#why" class="nav-link" data-scroll>Why TestGhost</a>
-    <a href="#coverage" class="nav-link" data-scroll>Coverage</a>
-    <a href="#training" class="nav-link" data-scroll>Training</a>
-    <a href="examples.html" class="nav-link">Examples</a>
-    <a href="#contact" class="nav-link" data-scroll>Contact</a>
-  </nav>
-
-  <main>
-    <!-- HERO -->
-    <section id="hero" class="hero-section">
-      <div class="hero-content">
-        <img src="assets/img/testghost_alt_nav_logo.png" alt="TestGhost" class="hero-image" />
-        <p class="hero-quote">“Test like a ghost. Ship like a machine.”</p>
+      <div class="footer-text">
+        © 2025 TestGhost. Built for confident, consistent QA launches. All rights reserved.
       </div>
+    </footer>
 
-      <button id="scrollDownBtn" class="scroll-down-btn" aria-label="Scroll to next section">
-        <span class="caret">⌄</span>
-      </button>
-    </section>
-
-    <!-- COVERAGE -->
-    <section class="section container" id="coverage">
-      <h2>Real Coverage, Real Speed</h2>
-      <p>
-        Our CI-integrated test systems hit frontend, backend, and APIs. Built on Playwright, Cypress, Postman, and K6 –
-        and tailored for modern, fast-moving development teams who want their releases bulletproof.
-      </p>
-    </section>
-
-    <!-- TRAINING -->
-    <section class="section container" id="training">
-      <h2>Train Your Team, Boost Your Stack</h2>
-      <p>
-        We don't just test—we train. We onboard devs into Shift Left best practices, equip teams with debugging tools,
-        and build smart automation libraries that last.
-      </p>
-    </section>
-
-    <!-- PRICING (Accordion) -->
-    <section class="section container" id="pricing">
-      <h2>Pricing</h2>
-      <p class="section-sub">Choose the engagement that fits your needs.</p>
-
-      <div class="pricing-accordion">
-        <details class="pricing-item">
-          <summary>
-            <span>QA Audit | Jumpstart</span>
-            <span class="summary-price">$1,400</span>
-          </summary>
-          <div class="pricing-body">
-            <ul>
-              <li>1-week engagement</li>
-              <li>Full QA/process audit</li>
-              <li>Test coverage + risk report</li>
-              <li>Recommendations deck</li>
-              <li>Stakeholder review session</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="pricing-item">
-          <summary>
-            <span>Automation Sprint</span>
-            <span class="summary-price">$3,250</span>
-          </summary>
-          <div class="pricing-body">
-            <ul>
-              <li>2-week project</li>
-              <li>Cypress/Playwright setup</li>
-              <li>Up to 15 critical flow tests</li>
-              <li>CI/CD integration</li>
-              <li>Docs + onboarding</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="pricing-item">
-          <summary>
-            <span>Ongoing QA Partner</span>
-            <span class="summary-price">$90/hr</span>
-          </summary>
-          <div class="pricing-body">
-            <ul>
-              <li>Flexible support</li>
-              <li>Bug bashes, reviews, audits</li>
-              <li>Suite maintenance & scaling</li>
-              <li>On-call Slack/Zoom support</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <!-- WHY -->
-    <section class="section container" id="why">
-      <h2>Why TestGhost</h2>
-      <p>
-        TestGhost is built by testers, for testers. We deliver bulletproof QA frameworks, custom automation tooling, and
-        in-depth coverage audits that scale with your stack.
-      </p>
-      <p>
-        Whether you're launching a new product or stabilizing a mature one, we help you build with confidence from commit to deploy.
-      </p>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="contact-bg-premium">
-      <div class="contact-card">
-        <form class="contact-form-premium" action="https://formsubmit.co/buildghost.dev@gmail.com" method="POST">
-          <div class="contact-form-group">
-            <label for="contact-email" class="contact-label sr-only">Your email</label>
-            <input id="contact-email" type="email" name="email" class="contact-input" placeholder="Your email" required />
-          </div>
-
-          <div class="contact-form-group">
-            <label for="contact-message" class="contact-label sr-only">Message</label>
-            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="What can TestGhost do for you?" required></textarea>
-          </div>
-
-          <input type="hidden" name="_captcha" value="false" />
-          <button type="submit" class="contact-submit">Send</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="container">
-    <div class="footer-logo">
-      <img src="assets/img/testghost_footer_logo.png" alt="TestGhost Footer Logo" id="footerLogo" />
-    </div>
-    <div class="footer-text">
-      <p>© 2025 TestGhost. Built for confident, consistent QA launches. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script defer src="assets/js/main.js?v=4"></script>
-  <script defer src="assets/js/_ghost.js"></script>
-</body>
+    <script defer src="assets/js/main.js"></script>
+  </body>
 </html>

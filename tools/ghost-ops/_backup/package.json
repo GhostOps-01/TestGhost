@@ -1,0 +1,11 @@
+{
+  "name": "ghost-ops",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "postcss": "^8.4.41",
+    "postcss-safe-parser": "^7.0.0",
+    "chokidar": "^4.0.3"
+  }
+}
