@@ -1,0 +1,2 @@
+// _ghost.js – small helpers live here
+(()=>{const els=document.querySelectorAll('.reveal');if(!els.length)return; if(!('IntersectionObserver'in window)){els.forEach(e=>e.classList.add('in'));return;}const io=new IntersectionObserver((ents,obs)=>{for(const e of ents){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}},{threshold:0.15});els.forEach(el=>io.observe(el));})();
