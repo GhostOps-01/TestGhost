@@ -186,3 +186,13 @@ html,body{overflow-x:hidden!important}
 footer{position:static!important;margin:0!important;width:100%!important;background:#222!important;color:#aaa;padding:24px 0;border-top:1px solid #444;box-sizing:border-box}
 .footer-logo,.footer-text{max-width:1200px;margin:0 auto;padding:0 24px}
 
+
+/* ===== TG footer/copy size + mobile spacing ===== */
+footer .footer-text{font-size:0.75rem;line-height:1.25;text-align:center}
+@media (max-width:768px){
+  .container{padding-left:16px;padding-right:16px}
+  .section{padding:48px 0}
+  .section h2{font-size:1.6rem}
+  .section-sub{font-size:0.95rem}
+}
+
