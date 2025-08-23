@@ -1,16 +1,7 @@
 {
-  "html": [
-  ],
-
   "css": [
     {
-      "ghostAppend": "/* ===== TG footer/copy size + mobile spacing ===== */\nfooter .footer-text{font-size:0.75rem;line-height:1.25;text-align:center}\n@media (max-width:768px){\n  .container{padding-left:16px;padding-right:16px}\n  .section{padding:48px 0}\n  .section h2{font-size:1.6rem}\n  .section-sub{font-size:0.95rem}\n}\n"
-    }
-  ],
-
-  "js": [
-    {
-      "ghostAppend": "// ===== TG debug logger (toggle with localStorage TG_DEBUG=1 or URL #debug) =====\n(function(){\n  try{\n    var DEBUG = (localStorage.getItem('TG_DEBUG') === '1') || /[#&?](debug|tg_debug)(=1)?\\b/i.test(location.href);\n    if(!DEBUG) return;\n\n    var styleHdr = 'background:#00ff88;color:#001b10;padding:2px 6px;border-radius:4px;font-weight:700';\n    console.group('%cTestGhost Debug', styleHdr);\n\n    // Mark that _ghost assets are loaded\n    var ghostCss = !!document.querySelector('link[rel=\"stylesheet\"][href*=\"_ghost.css\"]');\n    var ghostJs  = !!document.querySelector('script[src*=\"_ghost.js\"]');\n    console.log('ghost CSS loaded:', ghostCss);\n    console.log('ghost JS  loaded:', ghostJs);\n\n    // Hero image check\n    var hero = document.querySelector('.hero-section .hero-image, .hero-section picture img, .hero-section img');\n    if(hero){\n      var rect = hero.getBoundingClientRect();\n      console.log('hero src ->', hero.getAttribute('src'));\n      console.log('hero size ->', Math.round(rect.width)+'x'+Math.round(rect.height));\n    } else {\n      console.warn('hero image not found');\n    }\n\n    // Nav brand image check\n    var navBrand = document.querySelector('.nav-brand');\n    if(navBrand){\n      console.log('nav brand src ->', navBrand.getAttribute('src'));\n      var nbRect = navBrand.getBoundingClientRect();\n      console.log('nav brand size ->', Math.round(nbRect.width)+'x'+Math.round(nbRect.height));\n    } else {\n      console.warn('nav-brand not found');\n    }\n\n    // Footer font check\n    var footerText = document.querySelector('footer .footer-text');\n    if(footerText){\n      var cs = getComputedStyle(footerText);\n      console.log('footer font-size ->', cs.fontSize, ' line-height ->', cs.lineHeight);\n    } else {\n      console.warn('footer .footer-text not found');\n    }\n\n    // Tiny on-page badge so you know debug is active\n    var mark = document.createElement('div');\n    mark.textContent = 'TG DEBUG';\n    mark.style.cssText = 'position:fixed;bottom:8px;right:8px;background:#00ff88;color:#012;'+\n                         'padding:2px 6px;font:700 11px/1.2 monospace;z-index:99999;border-radius:4px;opacity:.85';\n    document.body.appendChild(mark);\n\n    console.groupEnd();\n  }catch(e){ console.error('[TG DEBUG error]', e); }\n})();\n"
+      "ghostAppend": "/* ===== GHOST DEMO: NAV + FOOTER OMBRE ===== */\n\n/* Nav gradient */\n.nav-header {\n  background: linear-gradient(to bottom, #000000, #1a1a1a) !important;\n}\n\n/* Footer gradient */\n.site-footer {\n  background: linear-gradient(to top, #000000, #1a1a1a) !important;\n}\n\n/* Optional: make text stand out */\n.nav-header, .site-footer {\n  color: #f5f5f5;\n}\n.nav-header a, .site-footer a {\n  color: #b9ff63;\n  text-decoration: none;\n}\n"
     }
   ]
 }
