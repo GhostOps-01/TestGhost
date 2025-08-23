@@ -1,0 +1,77 @@
+/* Page-scoped vars (fallbacks if base sheet lacks these) */
+:root{
+    --bg:#0f1113; --panel:#14171a; --line:#222; --muted:#9aa3a7;
+    --ink:#e8f0e8; --glow:#b6ff5a; --btn:#b6ff5a; --btn-ink:#0a0a0a;
+  }
+  
+  /* Layout helpers */
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px;}
+  .site-header{position:sticky;top:0;z-index:40;background:#0d0f11;border-bottom:1px solid var(--line);}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .site-nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none;}
+  .site-nav a{color:var(--ink);text-decoration:none;opacity:.9}
+  .site-nav li.active a{opacity:1}
+  .ghost-btn{padding:8px 12px;border-radius:10px;background:rgba(182,255,90,.12);border:1px solid rgba(182,255,90,.28)}
+  
+  /* Hero – keep it quiet */
+  .hero-quiet{background:linear-gradient(180deg,rgba(182,255,90,.05),transparent);}
+  .hero-quiet .wrap{padding:48px 20px 12px}
+  .hero-quiet .lead{color:var(--muted);max-width:800px}
+  .pill{display:inline-block;font-size:.82rem;padding:6px 10px;border-radius:999px;background:rgba(182,255,90,.12);border:1px solid rgba(182,255,90,.2);margin-bottom:12px}
+  
+  /* Plans grid */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:28px auto 12px}
+  .plan{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:18px;
+        padding:22px;box-shadow:0 12px 40px -18px rgba(182,255,90,.15)}
+  .plan h2{margin:.3rem 0 0}
+  .price-row{display:flex;align-items:baseline;gap:10px;margin:8px 0 12px}
+  .price{font-size:2.1rem;font-weight:800;color:var(--glow);text-shadow:0 0 30px rgba(182,255,90,.15)}
+  .unit{color:var(--muted)}
+  .bullets{margin:0 0 8px 0;padding-left:18px}
+  .bullets li{margin:.45rem 0}
+  .push{flex:1} /* pushes CTAs to bottom */
+  .cta-row{display:flex;gap:12px;margin-top:8px}
+  .cta-row.center{justify-content:center}
+  
+  .btn{display:inline-block;background:var(--btn);color:var(--btn-ink);font-weight:700;
+       padding:12px 18px;border-radius:14px;text-decoration:none;box-shadow:0 12px 30px -12px rgba(182,255,90,.45)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(182,255,90,.35);box-shadow:0 10px 24px -14px rgba(182,255,90,.25)}
+  .btn:active{transform:translateY(1px)}
+  
+  /* Cypress starter */
+  .starter{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;margin:40px auto}
+  .starter-art{display:flex;align-items:center;justify-content:center}
+  .starter-art img{max-width:520px;width:100%;border-radius:14px;box-shadow:0 20px 60px -30px rgba(182,255,90,.25)}
+  .pill-small{font-size:.75rem}
+  
+  /* FAQ */
+  .faq{margin:34px auto 4px}
+  .faq h3{margin-bottom:10px}
+  .faq details{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 0}
+  .faq summary{cursor:pointer;font-weight:700}
+  .faq details div{color:var(--muted);margin-top:8px}
+  
+  /* Center CTA band */
+  .cta-center{background:linear-gradient(0deg,rgba(182,255,90,.06),transparent);padding:38px 0;margin-top:24px;border-top:1px solid var(--line)}
+  .cta-center h3{text-align:center;margin:0 0 6px}
+  .cta-center p{text-align:center;color:var(--muted);margin:0 0 14px}
+  
+  /* Footer clean-up (no blue links, centered on wide screens) */
+  .site-footer{border-top:1px solid var(--line);padding:18px 0;margin-top:24px;background:#0d0f11}
+  .footwrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .foot-left{display:flex;align-items:center;gap:10px;color:var(--muted)}
+  .foot-links{display:flex;gap:16px;list-style:none;margin:0;padding:0}
+  .foot-links a{color:var(--muted);text-decoration:none}
+  .foot-links a:hover{color:var(--ink)}
+  
+  /* Responsive */
+  @media (max-width: 1024px){
+    .plans{grid-template-columns:1fr 1fr}
+    .starter{grid-template-columns:1fr}
+  }
+  @media (max-width: 640px){
+    .plans{grid-template-columns:1fr}
+    .site-nav ul{gap:12px;flex-wrap:wrap;justify-content:flex-end}
+    .cta-row{flex-direction:column}
+    .footwrap{flex-direction:column;align-items:flex-start}
+  }

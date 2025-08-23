@@ -1,9 +1,199 @@
+<!doctype html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="assets/css/style.css">  </head>
-<nav>
-    <a href="index.html">Home</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="examples.html">Examples</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <script src="assets/js/main.js" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing & Packages — TestGhost</title>
+
+  <!-- Base site styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Page-specific overrides so we don't touch the global CSS -->
+  <link rel="stylesheet" href="assets/css/pricing.css" />
+</head>
+
+<body>
+  <!-- ===== Header / Nav (matches site) ===== -->
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/img/testghost_alt_nav_logo.png" alt="TESTGHOST" height="28" />
+      </a>
+
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="pricing.html">Pricing</a></li>
+          <li><a href="examples.html">Examples</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a class="ghost-btn" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">Book Intro Call</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Hero (no busy background) ===== -->
+  <section class="hero hero-quiet">
+    <div class="wrap">
+      <span class="pill">Transparent, production-focused QA</span>
+      <h1>Pricing & Packages</h1>
+      <p class="lead">
+        Pick a starter that fits your moment. We focus on signal over noise—clear outcomes,
+        fast delivery, and maintainable assets your team can extend.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Plans grid (equal height cards, aligned buttons) ===== -->
+  <section class="wrap plans">
+    <!-- Plan 1 -->
+    <article class="plan">
+      <span class="pill">1–2 weeks · async + live review</span>
+      <h2>QA Audit + Recommendations</h2>
+
+      <div class="price-row">
+        <span class="price">$750</span>
+        <span class="unit">flat</span>
+      </div>
+
+      <ul class="bullets">
+        <li>Audit of current QA / release flow</li>
+        <li>Gap analysis + prioritized recommendations</li>
+        <li>Tooling & workflow suggestions (CI/CD, reporting)</li>
+        <li>Live read-out with your team</li>
+      </ul>
+
+      <div class="push"></div>
+
+      <div class="cta-row">
+        <a class="btn" href="contact.html">Start the Audit</a>
+        <a class="btn ghost" href="contact.html#question">Ask a question</a>
+      </div>
+    </article>
+
+    <!-- Plan 2 -->
+    <article class="plan">
+      <span class="pill">2–3 weeks · focused sprint</span>
+      <h2>Test Suite Upgrade</h2>
+
+      <div class="price-row">
+        <span class="price">$2,000</span>
+        <span class="unit">flat</span>
+      </div>
+
+      <ul class="bullets">
+        <li>Stabilize flaky tests & remove noise</li>
+        <li>Improve selectors, fixtures, reporting</li>
+        <li>Introduce patterns your team can reuse</li>
+        <li>CI integration & docs included</li>
+      </ul>
+
+      <div class="push"></div>
+
+      <div class="cta-row">
+        <a class="btn" href="examples.html">Upgrade my Suite</a>
+        <a class="btn ghost" href="examples.html">See examples</a>
+      </div>
+    </article>
+
+    <!-- Plan 3 -->
+    <article class="plan">
+      <span class="pill">Monthly · fractional QA</span>
+      <h2>Ongoing QA Partner</h2>
+
+      <div class="price-row">
+        <span class="price">from $4,500</span>
+        <span class="unit">/mo</span>
+      </div>
+
+      <ul class="bullets">
+        <li>Capacity you can dial up or down</li>
+        <li>Release verification & smoke passes</li>
+        <li>Roadmap-aligned automation</li>
+        <li>Slack-native collaboration</li>
+      </ul>
+
+      <div class="push"></div>
+
+      <div class="cta-row">
+        <a class="btn" href="contact.html#scope">Discuss scope</a>
+        <a class="btn ghost" href="contact.html#custom">Request custom plan</a>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== Cypress Starter (tidier, right-aligned logo) ===== -->
+  <section class="wrap starter">
+    <div class="starter-text">
+      <span class="pill pill-small">Most popular · ships in 3 days</span>
+      <h3>Cypress Automation Starter</h3>
+      <p>
+        Production-ready Cypress suite aligned to your critical flows.
+        Docs + video walkthrough, CI/CD integration guidance, and a 1-hour Q&A.
+      </p>
+      <ul class="bullets">
+        <li>25 production-ready tests</li>
+        <li>3-day turnaround</li>
+        <li>CI-ready, easy to extend</li>
+      </ul>
+
+      <div class="cta-row">
+        <a class="btn" href="cypressoffer.html">See details & book</a>
+        <a class="btn ghost" href="examples.html">View sample tests</a>
+      </div>
+    </div>
+
+    <div class="starter-art">
+      <img src="assets/img/testghost_main_hero_3.png" alt="TestGhost Cypress Starter" />
+    </div>
+  </section>
+
+  <!-- ===== FAQ (native accordions) ===== -->
+  <section class="wrap faq">
+    <h3>FAQ</h3>
+
+    <details>
+      <summary>What if we don’t use Cypress?</summary>
+      <div>We can scope Playwright or WebdriverIO. The audit identifies the best fit for your stack.</div>
+    </details>
+
+    <details>
+      <summary>Can you integrate with our CI and reporting?</summary>
+      <div>Yep—GitHub Actions / Jenkins / Azure DevOps + Allure / custom dashboards.</div>
+    </details>
+
+    <details>
+      <summary>How do you handle flaky tests?</summary>
+      <div>We attack root causes: selector strategy, test design, data setup, and network conditioning.</div>
+    </details>
+  </section>
+
+  <!-- ===== Centered CTA ===== -->
+  <section class="cta-center">
+    <div class="wrap">
+      <h3>Not sure which way to go?</h3>
+      <p>Tell us your goals—ship faster, reduce flake, level-up coverage—and we’ll point you at the right starting line.</p>
+      <div class="cta-row center">
+        <a class="btn" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">Book a 30-min consult</a>
+        <a class="btn ghost" href="contact.html">Send a quick brief</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer (styled so links aren’t blue) ===== -->
+  <footer class="site-footer">
+    <div class="wrap footwrap">
+      <div class="foot-left">
+        <img src="assets/img/testghost_footer_logo.png" alt="TestGhost" height="20" />
+        <span>© <span id="y"></span> TestGhost. All rights reserved.</span>
+      </div>
+      <ul class="foot-links">
+        <li><a href="https://linkedin.com/in/markrosenthalqa" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/RealMookulus" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
