@@ -1,45 +1,24 @@
-/* Nav drawer */
-const overlay = document.getElementById('navOverlay');
-const backdrop = document.getElementById('navBackdrop');
-const burger = document.querySelector('.hamburger');
-const closeBtn = document.querySelector('.nav-close-btn');
-
-function openNav() {
-  overlay.hidden = false;
-  backdrop.hidden = false;
-  requestAnimationFrame(() => overlay.classList.add('open'));
-  burger.setAttribute('aria-expanded', 'true');
-}
-function closeNav() {
-  overlay.classList.remove('open');
-  burger.setAttribute('aria-expanded', 'false');
-  setTimeout(() => {
-    overlay.hidden = true;
-    backdrop.hidden = true;
-  }, 200);
+// Mobile menu
+const toggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('.nav');
+if (toggle) {
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
 }
 
-if (burger) burger.addEventListener('click', openNav);
-if (closeBtn) closeBtn.addEventListener('click', closeNav);
-if (backdrop) backdrop.addEventListener('click', closeNav);
-window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.hidden) closeNav(); });
+// Year in footer
+document.getElementById('year').textContent = new Date().getFullYear();
 
-/* Pricing: keep one open at a time */
-const items = [...document.querySelectorAll('.pricing-item')];
-items.forEach(d => {
-  const s = d.querySelector('summary');
-  if (!s) return;
-  s.addEventListener('click', () => {
-    requestAnimationFrame(() => {
-      if (d.open) items.filter(x => x !== d && x.open).forEach(x => x.open = false);
-    });
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      io.unobserve(e.target);
+    }
   });
-});
+}, { threshold: 0.12 });
 
-/* Scroll down button */
-document.querySelectorAll('.scroll-down-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const target = document.querySelector(btn.dataset.scroll || '#pricing');
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
-  });
-});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));

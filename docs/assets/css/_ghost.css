@@ -186,3 +186,41 @@ html,body{overflow-x:hidden!important}
 footer{position:static!important;margin:0!important;width:100%!important;background:#222!important;color:#aaa;padding:24px 0;border-top:1px solid #444;box-sizing:border-box}
 .footer-logo,.footer-text{max-width:1200px;margin:0 auto;padding:0 24px}
 
+
+/* ===== TG footer/copy size + mobile spacing ===== */
+footer .footer-text{font-size:0.75rem;line-height:1.25;text-align:center}
+@media (max-width:768px){
+  .container{padding-left:16px;padding-right:16px}
+  .section{padding:48px 0}
+  .section h2{font-size:1.6rem}
+  .section-sub{font-size:0.95rem}
+}
+
+
+/* TG quick pass block pasted here (same as in A step 4) */
+:root{--tg-green:#B9FF63} /* ...rest of the block ... */
+
+/* TG quick pass block pasted here (same as in A step 4) */
+:root{--tg-green:#B9FF63} /* ...rest of the block ... */
+
+/* ===== GHOST DEMO: NAV + FOOTER OMBRE ===== */
+
+/* Nav gradient */
+.nav-header {
+  background: linear-gradient(to bottom, #000000, #1a1a1a) !important;
+}
+
+/* Footer gradient */
+.site-footer {
+  background: linear-gradient(to top, #000000, #1a1a1a) !important;
+}
+
+/* Optional: make text stand out */
+.nav-header, .site-footer {
+  color: #f5f5f5;
+}
+.nav-header a, .site-footer a {
+  color: #b9ff63;
+  text-decoration: none;
+}
+

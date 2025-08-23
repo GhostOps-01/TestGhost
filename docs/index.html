@@ -1,155 +1,215 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TESTGHOST — QA Engineering on Demand</title>
-    <link rel="icon" href="assets/img/testghost_favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
-  <body>
-    <!-- HEADER / NAV -->
-    <header class="nav-header">
-      <div class="nav-content">
-        <a href="#top" aria-label="Home" class="brand">
-          <img class="nav-brand" src="assets/img/testghost_dark.png" alt="TESTGHOST — QA Engineering on Demand" />
-        </a>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TestGhost — Full-Stack QA Solutions</title>
+  <meta name="description" content="TestGhost delivers QA automation, CI/CD integration, and scalable test strategy. Book a 30-min consult and ship with confidence." />
+  <link rel="icon" href="assets/img/testghost_favicon.png" />
 
-        <button class="hamburger" aria-controls="navOverlay" aria-expanded="false" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
+  <!-- Core styles (your existing files/paths) -->
+  <link rel="stylesheet" href="assets/css/style.css?v=1" />
+  <link rel="stylesheet" href="assets/css/_ghost.css?v=1" />
+
+  <!-- Minimal critical CSS so it looks good even if your bundles are cached -->
+  <style>
+    :root{
+      --bg:#070b0b; --panel:#0e1414; --ink:#f4f6f7; --muted:#a7b0b0;
+      --glow:#b7ff5a; --glow-dim:#5cff7a33; --line:#1e2626;
+      --btn:#b7ff5a; --btn-ink:#0a0f0f;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:var(--glow);text-decoration:none}
+    .wrap{max-width:1180px;margin-inline:auto;padding-inline:24px}
+    header{position:sticky;top:0;background:linear-gradient(180deg,var(--bg),#0b101000);z-index:20;border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .nav img{height:44px}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    .nav a{color:var(--ink);opacity:.85}
+    .cta{display:inline-flex;align-items:center;gap:10px;background:var(--btn);color:var(--btn-ink);padding:12px 18px;border-radius:12px;font-weight:700;box-shadow:0 0 0 0 var(--glow-dim);transition:transform .12s ease, box-shadow .12s ease}
+    .cta:hover{transform:translateY(-1px);box-shadow:0 0 0 6px var(--glow-dim)}
+    .ghost-btn{border:1px solid var(--line);padding:11px 16px;border-radius:12px;color:var(--ink)}
+    .hero{padding:56px 0 36px;border-bottom:1px solid var(--line)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .h1{font-size:44px;line-height:1.1;margin:6px 0 14px}
+    .lead{color:var(--muted);max-width:60ch}
+    .badges{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}
+    .badge{border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:#cfead3;background:#0e140f}
+    .cta-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .section{padding:38px 0;border-bottom:1px solid var(--line)}
+    h2{font-size:26px;margin:0 0 12px}
+    h3{font-size:18px;margin:0 0 8px}
+    .logo-row{display:flex;gap:22px;flex-wrap:wrap;align-items:center;opacity:.9}
+    .logo-row img{height:28px;filter:grayscale(1) contrast(1.2) brightness(.95)}
+    footer{padding:22px 0;color:var(--muted)}
+    .foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    @media (max-width:960px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .h1{font-size:34px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="wrap nav">
+      <a href="/" aria-label="TestGhost">
+        <img src="assets/img/testghost_alt_nav_logo.png" alt="TestGhost logo">
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="cypressoffer.html">Cypress Package</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="examples.html">Examples</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a class="cta" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">
+              Book Intro Call
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="badge">QA ENGINEERING ON DEMAND</div>
+        <h1 class="h1">Bulletproof Coverage. <span style="color:var(--glow)">Confident Launches.</span></h1>
+        <p class="lead">
+          TestGhost builds reliable, scalable QA automation—Cypress, Playwright, API, and CI/CD—so your team ships
+          faster with confidence. Shift-left strategy, observability, and clean, maintainable test suites.
+        </p>
+        <div class="badges">
+          <div class="badge">9+ years QA leadership</div>
+          <div class="badge">Shift-Left + CI/CD</div>
+          <div class="badge">UI • API • Mobile</div>
+        </div>
+        <div class="cta-row">
+          <a class="cta" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">Start with a 30-min consult</a>
+          <a class="ghost-btn" href="cypressoffer.html">See the $2,500 Cypress Starter</a>
+        </div>
       </div>
-    </header>
+      <div class="panel">
+        <img src="assets/img/testghost_main_hero_3.png" alt="TestGhost hero art" style="width:100%;border-radius:12px;display:block">
+      </div>
+    </div>
+  </section>
 
-    <!-- NAV OVERLAY -->
-    <nav class="nav-overlay" id="navOverlay" aria-label="Site menu" hidden>
-      <button class="nav-close-btn" aria-label="Close menu">×</button>
-      <a class="nav-link" href="#pricing">Pricing</a>
-      <a class="nav-link" href="#why">Why TestGhost</a>
-      <a class="nav-link" href="#contact">Contact</a>
-    </nav>
-    <div class="nav-backdrop" id="navBackdrop" hidden></div>
-
-    <main id="top">
-      <!-- HERO -->
-      <section class="hero-section">
-        <div class="hero-content container">
-          <picture>
-            <!-- mobile first -->
-            <source media="(max-width: 768px)" srcset="assets/img/testghost_dark_alt.png" />
-            <!-- desktop -->
-            <img class="hero-image" src="assets/img/testghost_header.png" alt="TESTGHOST // QA Engineering on Demand" />
-          </picture>
-          <p class="hero-quote">“Test like a ghost. Ship like a machine.”</p>
+  <!-- VALUE / WHAT WE DO -->
+  <section class="section">
+    <div class="wrap">
+      <h2>Full-Stack QA, from Strategy to Shipping</h2>
+      <div class="grid-3">
+        <div class="panel">
+          <h3>Automation that lasts</h3>
+          <p class="lead" style="font-size:14px">
+            Stable, maintainable suites in Cypress/Playwright with clear selectors, fixtures, and reporting. No flaky noise.
+          </p>
         </div>
-
-        <button class="scroll-down-btn" aria-label="Scroll to content" data-scroll="#pricing">
-          <span class="caret">⌄</span>
-        </button>
-      </section>
-
-      <!-- WHY -->
-      <section class="section container" id="why">
-        <h2>Real Coverage, Real Speed</h2>
-        <p class="section-sub">
-          Our CI-integrated test systems hit frontend, backend, and APIs. Built on Playwright, Cypress, Postman, and K6 — and tailored for modern, fast-moving development teams who want their releases bulletproof.
-        </p>
-
-        <h2 style="margin-top:48px">Train Your Team, Boost Your Stack</h2>
-        <p class="section-sub">
-          We don’t just test—we train. We onboard devs into Shift Left best practices, equip teams with debugging tools, and build smart automation libraries that last.
-        </p>
-      </section>
-
-      <!-- PRICING -->
-      <section class="section container" id="pricing">
-        <h2>Pricing</h2>
-        <p class="section-sub">Choose the engagement that fits your needs.</p>
-
-        <div class="pricing-accordion">
-          <details class="pricing-item">
-            <summary>
-              <span>QA Audit / Jumpstart</span>
-              <span class="summary-price">$1,400</span>
-              <span class="summary-plus">+</span>
-            </summary>
-            <div class="pricing-body">
-              <ul>
-                <li>1-week engagement</li>
-                <li>Full QA/process audit</li>
-                <li>Test coverage + risk report</li>
-                <li>Recommendations deck</li>
-                <li>Stakeholder review session</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="pricing-item">
-            <summary>
-              <span>Automation Sprint</span>
-              <span class="summary-price">$3,250</span>
-              <span class="summary-plus">+</span>
-            </summary>
-            <div class="pricing-body">
-              <ul>
-                <li>Playwright/Cypress scaffolding</li>
-                <li>API smoke + load hooks</li>
-                <li>CI integration &amp; dashboards</li>
-                <li>Developer onboarding session</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="pricing-item">
-            <summary>
-              <span>Ongoing QA Partner</span>
-              <span class="summary-price">$90/hr</span>
-              <span class="summary-plus">+</span>
-            </summary>
-            <div class="pricing-body">
-              <ul>
-                <li>Dedicated QA engineer(s)</li>
-                <li>Release hardening</li>
-                <li>Regression automation</li>
-                <li>Performance &amp; security checks</li>
-              </ul>
-            </div>
-          </details>
+        <div class="panel">
+          <h3>CI/CD integrated</h3>
+          <p class="lead" style="font-size:14px">
+            Tests wired into GitHub Actions / Jenkins / Azure DevOps with parallelization and artifacts for fast signal.
+          </p>
         </div>
-      </section>
+        <div class="panel">
+          <h3>Shift-left quality</h3>
+          <p class="lead" style="font-size:14px">
+            Collaborate early with devs and product; guardrails for APIs, data, and UX so regressions never reach prod.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <!-- CONTACT -->
-      <section class="section" id="contact">
-        <div class="contact-bg-premium">
-          <div class="contact-card">
-            <div class="contact-hero">
-              <img class="contact-hero-img" src="assets/img/testghost_contact_header.png" alt="Contact TestGhost"/>
+  <!-- PACKAGE CALLOUT -->
+  <section class="section">
+    <div class="wrap">
+      <div class="panel">
+        <div class="grid-2">
+          <div>
+            <h2 style="margin-bottom:6px">Cypress Automation Starter Package</h2>
+            <p class="lead" style="margin-top:0">Fixed package — <strong>$2,500</strong> — 3-day turnaround</p>
+            <ul style="margin:12px 0 0 18px; color:var(--muted)">
+              <li>25 production-ready Cypress tests aligned to your top critical flows</li>
+              <li>UI validation + full-site smoke with remaining tests</li>
+              <li>Docs + video walkthrough so your team can extend</li>
+              <li>Ready to drop into your CI/CD pipeline</li>
+            </ul>
+            <div class="cta-row" style="margin-top:16px">
+              <a class="cta" href="cypressoffer.html">View details &amp; book</a>
+              <a class="ghost-btn" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">Schedule consult</a>
             </div>
-
-            <form class="contact-form-premium container" action="#" method="post" onsubmit="return false;">
-              <label class="contact-label" for="email">Your email</label>
-              <input id="email" class="contact-input" type="email" placeholder="Your email" required />
-              <label class="contact-label" for="msg">Message</label>
-              <textarea id="msg" class="contact-textarea" placeholder="What can TestGhost do for you?"></textarea>
-              <button class="contact-submit" type="submit">Send</button>
-            </form>
+          </div>
+          <div class="panel" style="background:transparent; display:flex; align-items:center; justify-content:center;">
+            <img src="assets/img/testghost_dark_alt.png" 
+                 alt="TestGhost brand" 
+                 style="max-width:520px; width:100%; border-radius:12px; display:block;">
           </div>
         </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-logo">
-        <img src="assets/img/testghost_footer_logo.png" alt="TestGhost Footer Logo" />
       </div>
-      <div class="footer-text">
-        © 2025 TestGhost. Built for confident, consistent QA launches. All rights reserved.
-      </div>
-    </footer>
+    </div>
+  </section>
 
-    <script defer src="assets/js/main.js"></script>
-  </body>
+  <!-- SOCIAL PROOF / CLIENTS -->
+  <section class="section">
+    <div class="wrap">
+      <h2>Trusted by engineering teams that care about quality</h2>
+      <div class="panel">
+        <div class="logo-row">
+          <img src="assets/img/testghost_footer_logo.png" alt="Client A">
+          <img src="assets/img/testghost_client.png" alt="Client B">
+          <img src="assets/img/testghost_footer_logo.png" alt="Client C">
+          <img src="assets/img/testghost_client.png" alt="Client D">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="panel" style="text-align:center">
+        <h2 style="margin-bottom:8px">Ship faster with confidence</h2>
+        <p class="lead" style="margin:0 auto 16px;max-width:60ch">
+          Get a clear plan for UI/API automation, observability, and CI/CD. We’ll meet you where you are and level you up fast.
+        </p>
+        <div class="cta-row" style="justify-content:center">
+          <a class="cta" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">Book the 30-min Intro Call</a>
+          <a class="ghost-btn" href="contact.html">Message TestGhost</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap foot">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="assets/img/testghost_light.png" alt="TestGhost" style="height:24px" />
+        <span>© <span id="y"></span> TestGhost. All rights reserved.</span>
+      </div>
+      <div style="display:flex;gap:14px">
+        <a href="https://linkedin.com/in/markrosenthalqa" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/realmookulus" target="_blank" rel="noopener">GitHub</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script defer src="assets/js/main.js?v=1"></script>
+  <script defer src="assets/js/_ghost.js?v=1"></script>
+</body>
 </html>
