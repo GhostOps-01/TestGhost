@@ -9,7 +9,10 @@ if (toggle) {
 }
 
 // Year in footer
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('y');
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
 
 // Reveal on scroll
 const io = new IntersectionObserver((entries) => {

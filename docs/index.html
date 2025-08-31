@@ -38,6 +38,20 @@
     .badge{border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:#cfead3;background:#0e140f}
     .cta-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
     .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+    /* hero media: stable aspect ratio + crossfade */
+    .hero-media{
+      position:relative; overflow:hidden; border-radius:12px;
+      aspect-ratio:16/9; background:var(--panel);
+    }
+    .hero-media img,
+    .hero-media video{
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover; border-radius:inherit; display:block;
+    }
+    .hero-media .hero-fallback{ opacity:1; transition:opacity .85s ease; }
+    .hero-media video{ opacity:0; transition:opacity .85s ease; }
+    .hero-media video.is-on{ opacity:1; }
+    .hero-media .hero-fallback.is-off{ opacity:0; }
     .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
     .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
     .section{padding:38px 0;border-bottom:1px solid var(--line)}
@@ -70,7 +84,7 @@
           <li><a href="examples.html">Examples</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li>
-            <a class="cta" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">
+            <a id="navCta" class="cta--nav" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">
               Book Intro Call
             </a>
           </li>
@@ -100,7 +114,12 @@
         </div>
       </div>
       <div class="panel">
-        <img src="assets/img/testghost_main_hero_3.png" alt="TestGhost hero art" style="width:100%;border-radius:12px;display:block">
+        <div class="hero-media">
+          <img class="hero-fallback" src="assets/img/testghost_main_hero_3.png" alt="TestGhost hero art">
+          <video id="heroVideo" autoplay muted loop playsinline preload="auto">
+            <source src="assets/vid/testghost_header_vid.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
     </div>
   </section>
@@ -161,21 +180,6 @@
     </div>
   </section>
 
-  <!-- SOCIAL PROOF / CLIENTS -->
-  <section class="section">
-    <div class="wrap">
-      <h2>Trusted by engineering teams that care about quality</h2>
-      <div class="panel">
-        <div class="logo-row">
-          <img src="assets/img/testghost_footer_logo.png" alt="Client A">
-          <img src="assets/img/testghost_client.png" alt="Client B">
-          <img src="assets/img/testghost_footer_logo.png" alt="Client C">
-          <img src="assets/img/testghost_client.png" alt="Client D">
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA -->
   <section class="section">
     <div class="wrap">
@@ -193,21 +197,42 @@
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="wrap foot">
-      <div style="display:flex;align-items:center;gap:10px">
-        <img src="assets/img/testghost_light.png" alt="TestGhost" style="height:24px" />
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-left">
+        <img class="footer-logo" src="assets/img/testghost_footer_logo.png?v=1" alt="TestGhost" />
         <span>© <span id="y"></span> TestGhost. All rights reserved.</span>
       </div>
-      <div style="display:flex;gap:14px">
-        <a href="https://linkedin.com/in/markrosenthalqa" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/realmookulus" target="_blank" rel="noopener">GitHub</a>
-        <a href="contact.html">Contact</a>
-      </div>
+  
+      <ul class="footer-links">
+        <li><a href="https://linkedin.com/in/markrosenthalqa" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/RealMookulus" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
   </footer>
 
   <!-- JS -->
+  <script>
+    (function(){
+      var v = document.getElementById('heroVideo');
+      if(!v) return;
+      var wrap = v.parentElement;
+      var img = wrap && wrap.querySelector('.hero-fallback');
+
+      function onReady(){
+        v.classList.add('is-on');
+        if(img) img.classList.add('is-off');
+      }
+      v.addEventListener('canplay', onReady, { once:true });
+      v.addEventListener('loadeddata', onReady, { once:true });
+
+      // If the video errors, just keep the image visible
+      v.addEventListener('error', function(){
+        if(img){ img.classList.remove('is-off'); }
+      }, { once:true });
+    })();
+  </script>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
   <script defer src="assets/js/main.js?v=1"></script>
   <script defer src="assets/js/_ghost.js?v=1"></script>

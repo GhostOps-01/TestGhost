@@ -35,10 +35,17 @@ body{
 .header-inner{display:flex; align-items:center; justify-content:space-between; gap:18px; padding:14px 0}
 .brand-logo{height:34px; filter:drop-shadow(0 0 10px rgba(155,255,69,.35))}
 .nav{display:flex; align-items:center; gap:22px}
-.nav a{color:var(--text); text-decoration:none; font-weight:600; opacity:.9}
+/* before */
+.nav a{ color: var(--text); text-decoration:none; font-weight:600; opacity:.9 }
+
+/* after */
+.nav a:not(.cta--nav){ color: var(--text); text-decoration:none; font-weight:600; opacity:.9 }
 .nav a:hover{color:var(--accent)}
 .nav-toggle{display:none; background:none; border:0; padding:8px; cursor:pointer}
 .nav-toggle span{display:block; width:24px; height:2px; background:var(--text); margin:5px 0; transition:.25s}
+
+ul.nav { list-style: none; margin: 0; padding: 0; }
+ul.nav > li { display: inline-flex; }
 
 /* Buttons */
 .btn{
@@ -122,7 +129,7 @@ body{
 .cta-actions{display:flex; gap:12px; margin-top:6px}
 
 /* Footer */
-.site-footer{padding:36px 0; border-top:1px solid rgba(155,255,69,.15); background:rgba(7,9,12,.9)}
+.site-footer{padding:36px 0; background:rgba(7,9,12,.9)}
 .footer-inner{display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap}
 .footer-logo{height:30px; filter:drop-shadow(0 0 10px rgba(155,255,69,.3))}
 .footer-links{display:flex; gap:18px}
@@ -331,3 +338,483 @@ footer.foot a:hover { border-bottom-color: var(--glow,#b7ff5a); }
   box-shadow: 0 0 32px rgba(182,255,90,0.25);
 }
 .btn:hover { transform: translateY(-1px); }
+
+/* Book intro button style */
+.book-intro-btn {
+  color: #000; /* Use black text for better contrast on neon green */
+  text-decoration: none;
+  font-weight: 600;
+}
+.book-intro-btn:hover,
+.book-intro-btn:focus {
+  color: var(--glow, #b7ff5a);
+  text-decoration: underline;
+}
+
+/* ===== NAV CTA (Glass Pill) ===== */
+.site-header .nav li a.cta--nav {
+  /* --- Structure & Text --- */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 8px 18px; /* Adjusted padding */
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 999px;
+
+  /* --- Glass Effect --- */
+  background: rgba(255, 255, 255, 0.1); /* Light, transparent background */
+  border: 1px solid rgba(0, 255, 65, 0.4); /* Neon green border */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* --- Font & Color --- */
+  color: #00FF41; /* Crisp Neon Green */
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5); /* Subtle default glow */
+
+  /* --- Transitions --- */
+  transition: all 0.2s ease-in-out;
+}
+
+.site-header .nav li a.cta--nav:hover,
+.site-header .nav li a.cta--nav:focus {
+  /* --- Hover State --- */
+  background: rgba(0, 255, 65, 0.15); /* Increase neon background tint */
+  border-color: rgba(0, 255, 65, 0.8);
+  color: #00FF41; /* Keep text color */
+  
+  /* --- The "REALLY make the text glow" effect --- */
+  text-shadow: 
+    0 0 5px #00FF41,
+    0 0 10px #00FF41,
+    0 0 20px #00FF41,
+    0 0 30px #39ff14,
+    0 0 40px #39ff14;
+  
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 255, 65, 0.2); /* Add a subtle lift shadow */
+}
+
+/* 1) Stop the generic nav link color from touching the CTA */
+.nav a.cta--nav { color: #0b0f12 !important; }  /* black text by default */
+
+/* 2) Compact transparent glass pill */
+#navCta{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+
+  padding: 6px 10px;
+  font-size: 12.5px;
+  line-height: 1;
+  font-weight: 600;
+
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);           /* subtle glass */
+  color: #ffffff !important;                    /* BLACK text */
+  border: 1px solid rgba(183,255,90,0.35);
+  backdrop-filter: blur(6px) saturate(160%);
+  -webkit-backdrop-filter: blur(6px) saturate(160%);
+  text-decoration: none;
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.35),
+    inset 0 -1px 2px rgba(0,0,0,0.25);
+  transition: transform .14s ease, box-shadow .14s ease, background .14s ease, border-color .14s ease, color .14s ease;
+}
+
+/* 3) Glossy rim for depth (no blue) */
+#navCta::before{
+  content:"";
+  position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:
+    radial-gradient(120% 100% at 50% 0%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 55%) top/100% 70% no-repeat,
+    radial-gradient(140% 120% at 50% 120%, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 60%) bottom/100% 80% no-repeat;
+  mix-blend-mode:screen;
+}
+
+/* Hover: neon glass glow + dark ink (still compact) */
+#navCta:hover,
+#navCta:focus{
+  background: rgba(183,255,90,0.18);
+  color: #b7ff5a !important;                   /* readable dark text inside glow */
+  border-color: rgba(183,255,90,0.55);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.45),
+    inset 0 -1px 3px rgba(0,0,0,0.28),
+    0 0 14px rgba(183,255,90,0.45);
+  transform: translateY(-1px);
+}
+/* ==== Hero media: prevent side crop & keep layout stable ==== */
+.hero-media{
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 16 / 9;               /* lock layout; no jump */
+  background: var(--panel);
+}
+.hero-media img,
+.hero-media video{
+  position: absolute;
+  inset: 0;                 /* no inner crop or shrink */
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: inherit;
+  object-position: center center;
+}
+/* show entire video without trimming edges */
+.hero-media video{
+  object-fit: contain;    /* show whole video, no side crop */
+  background: #000;
+  z-index: 2;             /* ensure video sits above fallback image */
+}
+/* fallback image can still fill */
+.hero-media img{
+  object-fit: contain;    /* match video behavior so neither crops */
+  background: #000;
+  z-index: 1;
+}
+
+/* Center the CTAs on the Cypress offer panel */
+.panel .cta-row{
+  display: flex;
+  justify-content: center;    /* 👈 center horizontally */
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;           /* match your inline style */
+}
+
+/* optional: keep buttons same width + centered text */
+.panel .cta-row .cta,
+.panel .cta-row .ghost-btn{
+  text-align: center;
+  min-width: 220px;
+}
+
+/* Center text inside all buttons (CTA, ghost, and .btn) */
+.btn,
+a.cta,
+a.ghost-btn{
+  display: inline-flex;
+  align-items: center;     /* vertical centering */
+  justify-content: center; /* horizontal centering */
+  text-align: center;
+  line-height: 1;          /* prevents optical off-center */
+  gap: 8px;                /* nice spacing if an icon appears */
+}
+
+/* force no-crop for hero media */
+.hero-media video,
+.hero-media img{ object-fit: contain !important; object-position: center; }
+
+/* Remove focus outline only in the footer area */
+
+/* ==== Footer polish: remove blue focus ring & enlarge logo ==== */
+/* Remove focus outlines from footer links (mouse/trackpad) */
+footer .foot a,
+footer .foot a:focus,
+footer .foot a:active,
+footer .foot a:focus-visible{
+  outline: none !important;
+  box-shadow: none !important;
+}
+/* Also prevent focus outline on the wrapper itself */
+footer .foot:focus,
+footer .foot:focus-within{
+  outline: none !important;
+}
+/* Mobile/WebKit tap highlight */
+footer .foot a{
+  -webkit-tap-highlight-color: transparent;
+}
+/* Firefox inner focus fix */
+footer .foot a::-moz-focus-inner{
+  border: 0;
+}
+
+/* Enlarge footer logo (overrides inline height via !important) */
+footer .foot img[alt="TestGhost"]{
+  height: 28px !important; /* was 24px inline */
+}
+
+footer a:focus,
+footer a:active,
+footer a:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Center the hero lead on pricing */
+.hero-quiet .lead{
+  text-align: center;
+  max-width: 900px;
+  margin: 8px auto 0;
+}
+
+/* Nav: consistent padding + active underline (skip the CTA) */
+.site-header .nav a:not(.cta--nav){
+  padding: 8px 10px;
+  border-bottom: 2px solid transparent;
+}
+
+.site-header .nav a.active:not(.cta--nav){
+  border-bottom-color: var(--accent);   /* neon green */
+}
+
+.site-header .nav a:not(.cta--nav):hover{
+  border-bottom-color: rgba(155,255,69,.55);
+}
+
+/* Enforce consistent header spacing + logo size site-wide */
+header.site-header .header-inner{ padding: 14px 0; }
+header.site-header img.brand-logo{
+  height: 34px; width: auto; display: block;
+}
+header.site-header .nav{ gap: 22px; }
+header.site-header .nav li{ display: inline-flex; }
+
+/* ==== NAV: unify across all pages (tiny, surgical overrides) ==== */
+header .header-inner{ padding:14px 0 !important; }
+
+header .header-inner > a > img,
+header .nav img,
+header img.brand-logo{
+  height:44px !important;  /* match homepage */
+  width:auto !important;
+  display:block;
+}
+
+ul.nav{ 
+  display:flex !important; 
+  gap:18px; 
+  list-style:none; 
+  margin:0; 
+  padding:0; 
+}
+ul.nav > li{ display:inline-flex; }
+
+header .nav a:not(.cta--nav){
+  padding:8px 10px;
+  border-bottom:2px solid transparent;
+}
+header .nav a.active:not(.cta--nav){
+  border-bottom-color: var(--accent);   /* green underline for current page */
+}
+
+/* ==== NAV FIX: normalize any header <ul> across all pages ==== */
+header .header-inner > ul{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  gap:18px !important;
+  list-style:none !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+header .header-inner > ul > li{ display:inline-flex !important; }
+
+/* links (skip the glass CTA) */
+header .header-inner > ul a:not(.cta--nav){
+  color:var(--text);
+  text-decoration:none;
+  padding:8px 10px;
+  border-bottom:2px solid transparent;
+}
+header .header-inner > ul a.active:not(.cta--nav){
+  border-bottom-color:var(--accent);
+}
+
+/* keep logo + header spacing identical everywhere */
+header .header-inner{ padding:14px 0 !important; }
+header .header-inner a > img,
+header img.brand-logo{
+  height:44px !important;
+  width:auto !important;
+  display:block !important;
+}
+
+/* ==== Global header normalization (matches homepage) ==== */
+.wrap.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 0;
+}
+.wrap.nav > a img{
+  height:44px;
+  width:auto;
+  display:block;
+}
+
+/* nav list: horizontal, no bullets */
+.wrap.nav nav ul{
+  display:flex;
+  gap:18px;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.wrap.nav nav li{ display:inline-flex; }
+
+/* links (skip the glass CTA) */
+.wrap.nav nav a:not(.cta--nav){
+  color:var(--text);
+  text-decoration:none;
+  opacity:.9;
+  padding:8px 10px;
+  border-bottom:2px solid transparent;
+}
+.wrap.nav nav a.active:not(.cta--nav){
+  border-bottom-color:var(--accent);
+}
+.wrap.nav nav a:not(.cta--nav):hover{
+  border-bottom-color:rgba(155,255,69,.55);
+}
+
+/* ============ Tidy the green "pill" chips ============ */
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 12px;
+  font-size:.82rem;
+  line-height:1;                 /* removes the tall look */
+  border-radius:999px;
+  background:rgba(182,255,90,.12);
+  border:1px solid rgba(182,255,90,.20);
+  color:var(--text);
+  margin-bottom:12px;
+}
+.pill-small{ font-size:.75rem; }
+
+/* Center the pills on plan cards only */
+.plan > .pill{
+  display:block;                 /* allow margin auto to work */
+  width:max-content;
+  margin:0 auto 12px;
+}
+
+/* ============ Stop the nav label wrapping ============ */
+/* keep all top-nav items on one line (except CTA width is fine) */
+.wrap.nav nav a:not(.cta--nav){
+  white-space:nowrap;
+}
+
+/* shared wrapper used by the header on ALL pages */
+.wrap { max-width: 1180px; margin-inline: auto; padding-inline: 24px; }
+
+/* header/nav sizing (same as home) */
+.nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; }
+.nav img{ height:44px; }                 /* logo size */
+.nav ul{ display:flex; gap:18px; list-style:none; margin:0; padding:0; }
+.nav li a{ color:var(--ink); opacity:.85; text-decoration:none; white-space:nowrap; } /* prevent wrapping */
+
+/* Prevent nav labels from breaking onto two lines */
+.nav a { white-space: nowrap; }
+
+/* Normalize any header wrapper just in case */
+header .wrap,
+header .container,
+header .header-inner { 
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* ===== Footer: normalize across all pages (robust to different HTML) ===== */
+footer.site-footer,
+footer {
+  background: #0d0f11;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 24px 0;
+}
+
+/* Make footer width/padding match the header’s .wrap */
+footer .wrap {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* If the inner container is named differently, normalize it too */
+footer .foot,
+footer .footwrap,
+footer .footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Left cluster (logo + copyright) when present */
+footer .footer-left { display: flex; align-items: center; gap: 12px; color: var(--muted); }
+
+/* Use whatever logo you have; keep size consistent + glowy */
+footer img[alt="TestGhost"] {
+  height: clamp(40px, 5vw, 60px);
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 0 10px rgba(183,255,90,.35));
+}
+
+/* Kill bullets + spacing on any footer lists */
+footer ul,
+footer .foot-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 18px;
+}
+
+/* Neon/glowy footer links everywhere */
+footer a {
+  color: var(--glow, #b7ff5a);
+  text-decoration: none;
+  text-shadow: 0 0 6px rgba(183,255,90,.35);
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s ease, opacity .15s ease;
+}
+footer a:hover { border-bottom-color: var(--glow, #b7ff5a); }
+
+/* Remove blue focus ring just in the footer */
+footer a:focus,
+footer a:active,
+footer a:focus-visible { outline: none; box-shadow: none; }
+
+/* Small screens */
+@media (max-width: 640px) {
+  footer .wrap { align-items: flex-start; }
+}
+
+footer a {
+  color: var(--glow);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+footer a:hover {
+  text-shadow: 0 0 6px var(--glow);
+}
+
+footer.site-footer a {
+  color: var(--glow) !important;
+  text-decoration: none;
+}
+
+footer.site-footer a:hover {
+  text-shadow: 0 0 6px var(--glow);
+}

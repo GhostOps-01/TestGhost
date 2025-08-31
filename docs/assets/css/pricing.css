@@ -75,3 +75,55 @@
     .cta-row{flex-direction:column}
     .footwrap{flex-direction:column;align-items:flex-start}
   }
+
+  /* Center the pills at the top of each plan card */
+.plan > .pill{
+  display: block;            /* overrides inline-block */
+  width: max-content;        /* shrink to fit content */
+  margin: 0 auto 12px;       /* centers the element */
+  text-align: center;
+}
+/* fallback if max-content ever acts weird in an older browser: */
+/* .plan > .pill { display: table; margin: 0 auto 12px; } */
+
+/* Normalize the header/nav on internal pages (Pricing) */
+header.site-header .container.header-inner { 
+  padding: 14px 0 !important; 
+}
+
+header.site-header img.brand-logo { 
+  height: 34px !important; 
+  width: auto; 
+  display: block; 
+}
+
+header.site-header nav ul { 
+  display: flex; 
+  align-items: center; 
+  gap: 22px !important; 
+  margin: 0; 
+  padding: 0; 
+}
+
+header.site-header nav a { 
+  padding: 8px 10px !important; 
+}
+
+/* underline the current nav item (Pricing) */
+.nav a.active { 
+  border-bottom: 2px solid var(--accent); 
+}
+
+/* center the hero lead paragraph on Pricing */
+.hero-quiet .lead { 
+  text-align: center; 
+  max-width: 900px; 
+  margin: 0 auto; 
+}
+
+/* make those small green plan "pills" perfectly centered */
+.pill { 
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+}

@@ -13,19 +13,22 @@
 
 <body>
   <!-- ===== Header / Nav (matches site) ===== -->
-  <header class="site-header">
-    <div class="wrap nav-wrap">
-      <a class="brand" href="index.html">
-        <img src="assets/img/testghost_alt_nav_logo.png" alt="TESTGHOST" height="28" />
+  <header>
+    <div class="wrap nav">
+      <a href="/" aria-label="TestGhost">
+        <img src="assets/img/testghost_alt_nav_logo.png" alt="TestGhost logo">
       </a>
-
-      <nav class="site-nav">
+      <nav aria-label="Primary">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li class="active"><a href="pricing.html">Pricing</a></li>
+          <li><a href="cypressoffer.html">Cypress Package</a></li>
+          <li><a href="pricing.html" class="active">Pricing</a></li>
           <li><a href="examples.html">Examples</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a class="ghost-btn" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">Book Intro Call</a></li>
+          <li>
+            <a id="navCta" class="cta--nav" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">
+              Book Intro Call
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -48,7 +51,7 @@
     <!-- Plan 1 -->
     <article class="plan">
       <span class="pill">1–2 weeks · async + live review</span>
-      <h2>QA Audit + Recommendations</h2>
+      <h2>QA Audit</h2>
 
       <div class="price-row">
         <span class="price">$750</span>
