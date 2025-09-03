@@ -1,9 +1,766 @@
+<!doctype html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="assets/css/style.css">  </head>
-<nav>
-    <a href="index.html">Home</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="examples.html">Examples</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <script src="assets/js/main.js" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact TestGhost — Get Your QA Strategy</title>
+  <meta name="description" content="Ready to revolutionize your QA process? Connect with TestGhost for expert consultation, custom automation solutions, and production-ready strategies." />
+  <link rel="icon" href="assets/img/testghost_favicon.png" />
+
+  <!-- Core styles -->
+  <link rel="stylesheet" href="assets/css/style.css?v=2" />
+  <link rel="stylesheet" href="assets/css/_ghost.css?v=2" />
+  
+  <!-- Contact page specific styles -->
+  <style>
+    :root {
+      --neon-green: #b7ff5a;
+      --neon-glow: rgba(183, 255, 90, 0.15);
+      --dark-bg: #070b0b;
+      --panel-bg: #0e1414;
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(183, 255, 90, 0.2);
+    }
+
+    body {
+      background: radial-gradient(1200px 600px at 30% -10%, rgba(183,255,90,.08), transparent 60%), var(--dark-bg);
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(7, 11, 11, 0.85) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(183, 255, 90, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero {
+      position: relative;
+      padding: 100px 0 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at 70% 30%, rgba(183, 255, 90, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 30% 70%, rgba(183, 255, 90, 0.08) 0%, transparent 50%);
+      animation: heroGlow 12s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes heroGlow {
+      0% { transform: rotate(0deg) scale(1); }
+      100% { transform: rotate(8deg) scale(1.1); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #fff, var(--neon-green), #fff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShimmer 4s ease-in-out infinite;
+    }
+
+    @keyframes textShimmer {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.3); }
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--muted);
+      max-width: 800px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .contact-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-form-section {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      padding: 50px;
+      backdrop-filter: blur(25px);
+      box-shadow: 
+        0 25px 80px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-form-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+      animation: borderGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes borderGlow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    .form-title {
+      font-size: 2rem;
+      color: var(--neon-green);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .form-subtitle {
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .form-group { margin-bottom: 30px; position: relative; }
+
+    .form-label {
+      display: block;
+      color: var(--neon-green);
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(183, 255, 90, 0.2);
+      border-radius: 15px;
+      padding: 18px 20px;
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--neon-green);
+      box-shadow: 
+        0 0 0 4px rgba(183, 255, 90, 0.1),
+        0 0 20px rgba(183, 255, 90, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .form-textarea { height: 150px; resize: vertical; }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--neon-green), #9bff45);
+      color: #000;
+      border: none;
+      padding: 20px;
+      border-radius: 15px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(183, 255, 90, 0.3);
+      position: relative;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(183, 255, 90, 0.5);
+      background: linear-gradient(135deg, #9bff45, var(--neon-green));
+    }
+
+    .submit-btn:active { transform: translateY(-1px); }
+
+    .quick-contact { display: flex; flex-direction: column; gap: 30px; }
+
+    .contact-method {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 25px;
+      padding: 40px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-method::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(183, 255, 90, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .contact-method:hover::before { left: 100%; }
+
+    .contact-method:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+      border-color: var(--neon-green);
+    }
+
+    .method-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: block;
+      color: var(--neon-green);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+    .method-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
+    .method-description { color: var(--muted); line-height: 1.6; margin-bottom: 15px; }
+    .method-action { color: var(--neon-green); font-weight: 600; font-size: 1.1rem; }
+
+    .availability-status {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(20px);
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(40, 167, 69, 0.2);
+      border: 1px solid #28a745;
+      border-radius: 50px;
+      padding: 10px 20px;
+      margin-bottom: 15px;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      background: #28a745;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+    }
+
+    .response-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .response-card {
+      background: rgba(183, 255, 90, 0.1);
+      border: 1px solid rgba(183, 255, 90, 0.3);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .response-time { font-size: 2rem; font-weight: 800; color: var(--neon-green); margin-bottom: 5px; }
+    .response-label { color: var(--muted); font-size: 0.9rem; }
+
+    footer {
+      background: rgba(7, 11, 11, 0.85) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      border-top: 1px solid rgba(183, 255, 90, 0.3);
+      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
+      margin-top: 100px;
+    }
+
+    .floating-cta {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--neon-green), #9bff45);
+      color: #000;
+      border: none;
+      width: 70px;
+      height: 70px;
+      border-radius: 35px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(183, 255, 90, 0.4);
+      transition: all 0.3s ease;
+      z-index: 100;
+      animation: floatingBob 3s ease-in-out infinite;
+    }
+
+    .floating-cta:hover { transform: scale(1.1); box-shadow: 0 15px 40px rgba(183, 255, 90, 0.6); }
+
+    @keyframes floatingBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+    @media (max-width: 1024px) {
+      .contact-container { grid-template-columns: 1fr; gap: 40px; }
+      .contact-form-section { padding: 40px 30px; }
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 60px 0 40px; }
+      .contact-form-section { padding: 30px 20px; border-radius: 20px; }
+      .contact-method { padding: 30px 20px; border-radius: 20px; }
+      .response-grid { grid-template-columns: 1fr; }
+      .floating-cta { bottom: 20px; right: 20px; width: 60px; height: 60px; font-size: 1.3rem; }
+    }
+
+    .form-input.error, .form-textarea.error, .form-select.error {
+      border-color: #ff4757; box-shadow: 0 0 0 4px rgba(255, 71, 87, 0.1);
+    }
+    .form-input.success, .form-textarea.success, .form-select.success {
+      border-color: #2ed573; box-shadow: 0 0 0 4px rgba(46, 213, 115, 0.1);
+    }
+    .error-message { color: #ff4757; font-size: 0.8rem; margin-top: 8px; display: none; }
+    .error-message.show { display: block; }
+
+    .submit-btn.loading { background: linear-gradient(135deg, #666, #888); cursor: not-allowed; }
+    .submit-btn.loading::after {
+      content: ""; display: inline-block; width: 20px; height: 20px; border: 2px solid #000;
+      border-radius: 50%; border-top-color: transparent; animation: spin 1s linear infinite; margin-left: 10px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="wrap nav">
+      <a href="index.html" aria-label="TestGhost">
+        <img src="assets/img/testghost_alt_nav_logo.png" alt="TestGhost logo">
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="cypressoffer.html">Cypress Package</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="examples.html">Examples</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li>
+            <a id="navCta" class="cta--nav" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">
+              Book Intro Call
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+ <!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <h1>Let's Build Something Incredible</h1>
+    <p class="hero-subtitle">
+      Ready to transform your QA process? Whether you need a complete automation overhaul 
+      or want to enhance your existing strategy, TestGhost delivers surgical precision 
+      and scalable solutions.
+    </p>
+    
+    <!-- Logo centered under subtitle -->
+    <img src="assets/img/testghost_dark.png" 
+         alt="TestGhost logo" 
+         class="hero-logo">
+  </div>
+</section>
+
+<style>
+  .hero-logo {
+    display: block;
+    margin: 30px auto 0;
+    max-width: 180px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(183, 255, 90, 0.5));
+    transition: transform 0.3s ease, filter 0.3s ease;
+    animation: logoPulse 4s infinite ease-in-out;
+  }
+
+  .hero-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(183, 255, 90, 0.8));
+  }
+
+  @keyframes logoPulse {
+    0%, 100% { filter: drop-shadow(0 0 10px rgba(183, 255, 90, 0.5)); }
+    50% { filter: drop-shadow(0 0 20px rgba(183, 255, 90, 0.9)); }
+  }
+</style>
+
+  <!-- MAIN CONTACT SECTION -->
+  <section class="wrap" style="margin-bottom: 80px;">
+    <div class="contact-container">
+      <!-- Contact Form -->
+      <div class="contact-form-section">
+        <h2 class="form-title">Start Your QA Journey</h2>
+        <p class="form-subtitle">Tell us about your project and let's craft the perfect testing strategy</p>
+        
+        <!-- Formspree-wired form -->
+        <form id="contactForm"
+              class="contact-form"
+              action="https://formspree.io/f/meolzwll"
+              method="POST"
+              novalidate>
+          <!-- Formspree helpers -->
+          <input type="hidden" name="_subject" value="New TestGhost inquiry">
+          <input type="hidden" name="_template" value="table">
+          <!-- Honeypot -->
+          <input type="text" name="_gotcha" style="display:none">
+
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" id="name" name="name" class="form-input" required>
+            <div class="error-message">Please enter your full name</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+            <div class="error-message">Please enter a valid email address</div>
+          </div>
+
+          <div class="form-group">
+            <label for="company" class="form-label">Company</label>
+            <input type="text" id="company" name="company" class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label for="project-type" class="form-label">Project Type</label>
+            <select id="project-type" name="project-type" class="form-select" required>
+              <option value="">Select your needs</option>
+              <option value="audit">QA Process Audit</option>
+              <option value="automation">Test Automation Setup</option>
+              <option value="cypress-package">Cypress Starter Package</option>
+              <option value="ongoing">Ongoing QA Partnership</option>
+              <option value="consultation">Strategy Consultation</option>
+              <option value="other">Other/Custom</option>
+            </select>
+            <div class="error-message">Please select a project type</div>
+          </div>
+
+          <div class="form-group">
+            <label for="timeline" class="form-label">Timeline</label>
+            <select id="timeline" name="timeline" class="form-select">
+              <option value="">Select timeline</option>
+              <option value="asap">ASAP (Within 1 week)</option>
+              <option value="month">Within 1 month</option>
+              <option value="quarter">Within 3 months</option>
+              <option value="flexible">Flexible</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Project Details</label>
+            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your current QA challenges, tech stack, team size, and goals..." required></textarea>
+            <div class="error-message">Please describe your project needs</div>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Launch QA Transformation
+          </button>
+        </form>
+      </div>
+
+      <!-- Quick Contact Methods -->
+      <div class="quick-contact">
+        <a href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener" class="contact-method">
+          <span class="method-icon">🚀</span>
+          <div class="method-title">Book Instant Call</div>
+          <div class="method-description">
+            Jump straight into a 30-minute strategy session. Perfect for urgent projects or quick consultations.
+          </div>
+          <div class="method-action">Schedule Now →</div>
+        </a>
+
+        <a href="mailto:testghost.dev@gmail.com" class="contact-method">
+          <span class="method-icon">⚡</span>
+          <div class="method-title">Direct Email</div>
+          <div class="method-description">
+            Send detailed project requirements and get a comprehensive response with next steps.
+          </div>
+          <div class="method-action">testghost.dev@gmail.com</div>
+        </a>
+
+        <a href="https://linkedin.com/in/markrosenthalqa" target="_blank" rel="noopener" class="contact-method">
+          <span class="method-icon">🔗</span>
+          <div class="method-title">LinkedIn Connect</div>
+          <div class="method-description">
+            Connect directly for networking, casual conversations, or to see more work examples.
+          </div>
+          <div class="method-action">Connect on LinkedIn →</div>
+        </a>
+
+        <!-- Availability Status -->
+        <div class="availability-status">
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            Available for New Projects
+          </div>
+          <p style="color: var(--muted); margin: 0;">
+            Currently accepting new clients for Q1 2025
+          </p>
+          
+          <div class="response-grid">
+            <div class="response-card">
+              <div class="response-time">&lt; 4h</div>
+              <div class="response-label">Initial Response</div>
+            </div>
+            <div class="response-card">
+              <div class="response-time">24h</div>
+              <div class="response-label">Detailed Proposal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOATING CTA -->
+  <button class="floating-cta" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'})" title="Quick Contact">
+    📧
+  </button>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-left">
+        <img class="footer-logo" src="assets/img/testghost_footer_logo.png?v=1" alt="TestGhost" />
+        <span>© <span id="y"></span> TestGhost. All rights reserved.</span>
+      </div>
+  
+      <ul class="footer-links">
+        <li><a href="https://linkedin.com/in/markrosenthalqa" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/RealMookulus" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    class ContactForm {
+      constructor() {
+        this.form = document.getElementById('contactForm');
+        this.submitBtn = this.form.querySelector('.submit-btn');
+        this.init();
+      }
+
+      init() {
+        this.form.addEventListener('submit', this.handleSubmit.bind(this));
+        const inputs = this.form.querySelectorAll('.form-input, .form-textarea, .form-select');
+        inputs.forEach(input => {
+          input.addEventListener('blur', () => this.validateField(input));
+          input.addEventListener('input', () => this.clearErrors(input));
+        });
+      }
+
+      validateField(field) {
+        const value = field.value.trim();
+        const type = field.type;
+        const required = field.required;
+        this.clearErrors(field);
+
+        if (required && !value) { this.showError(field, 'This field is required'); return false; }
+
+        if (type === 'email' && value) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) { this.showError(field, 'Please enter a valid email address'); return false; }
+        }
+
+        this.showSuccess(field);
+        return true;
+      }
+
+      showError(field, message) {
+        field.classList.add('error'); field.classList.remove('success');
+        const errorEl = field.parentNode.querySelector('.error-message');
+        if (errorEl) { errorEl.textContent = message; errorEl.classList.add('show'); }
+      }
+
+      showSuccess(field) {
+        field.classList.add('success'); field.classList.remove('error');
+        this.clearErrors(field);
+      }
+
+      clearErrors(field) {
+        field.classList.remove('error');
+        const errorEl = field.parentNode.querySelector('.error-message');
+        if (errorEl) { errorEl.classList.remove('show'); }
+      }
+
+      async handleSubmit(e) {
+        e.preventDefault();
+        const inputs = this.form.querySelectorAll('.form-input, .form-textarea, .form-select');
+        let isValid = true;
+        inputs.forEach(input => { if (!this.validateField(input)) isValid = false; });
+        if (!isValid) { this.showNotification('Please fix the errors above', 'error'); return; }
+
+        this.submitBtn.classList.add('loading');
+        this.submitBtn.disabled = true;
+
+        try {
+          const formData = new FormData(this.form);
+          const res = await fetch(this.form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: formData
+          });
+
+          if (res.ok) {
+            this.showNotification('Message sent! We’ll reply fast.', 'success');
+            this.form.reset();
+            inputs.forEach(i => { i.classList.remove('success','error'); this.clearErrors(i); });
+          } else {
+            let msg = 'Failed to send message. Please try again or email testghost.dev@gmail.com.';
+            try {
+              const data = await res.json();
+              if (data && data.errors && data.errors.length) {
+                msg = data.errors.map(e => e.message).join(' • ');
+              }
+            } catch(_) {}
+            this.showNotification(msg, 'error');
+          }
+        } catch (error) {
+          this.showNotification('Network error. Please try again or contact us directly.', 'error');
+        } finally {
+          this.submitBtn.classList.remove('loading');
+          this.submitBtn.disabled = false;
+        }
+      }
+
+      showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.setAttribute('role', 'alert');
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: ${type === 'success'
+            ? 'linear-gradient(135deg, #2ed573, #20bf6b)'
+            : 'linear-gradient(135deg, #ff4757, #ff3742)'};
+          color: #000;
+          padding: 20px 24px;
+          border-radius: 16px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+          z-index: 1000;
+          max-width: 360px;
+          font-weight: 700;
+          transform: translateX(420px);
+          transition: transform 0.3s ease;
+          background-clip: padding-box;
+        `;
+
+        const msg = document.createElement('div');
+        msg.style.cssText = `color:#001b0d; line-height:1.35;`;
+        msg.textContent = message;
+        notification.appendChild(msg);
+
+        if (type === 'success') {
+          const cta = document.createElement('a');
+          cta.href = 'https://calendly.com/buildghost-dev/30min';
+          cta.target = '_blank';
+          cta.rel = 'noopener';
+          cta.textContent = '👉 Book a Call Now';
+          cta.style.cssText = `
+            display:inline-block; margin-top:10px; padding:10px 14px;
+            background:#fff; color:#000; border-radius:10px;
+            font-size:0.92rem; font-weight:800; text-decoration:none;
+            transition: transform 0.15s ease, background 0.2s ease;
+          `;
+          cta.onmouseover = () => (cta.style.background = '#f2f2f2');
+          cta.onmouseout  = () => (cta.style.background = '#fff');
+          cta.onmousedown = () => (cta.style.transform = 'translateY(1px)');
+          cta.onmouseup   = () => (cta.style.transform = 'translateY(0)');
+          notification.appendChild(cta);
+        }
+
+        document.body.appendChild(notification);
+
+        setTimeout(() => { notification.style.transform = 'translateX(0)'; }, 80);
+
+        setTimeout(() => {
+          notification.style.transform = 'translateX(420px)';
+          setTimeout(() => {
+            if (document.body.contains(notification)) document.body.removeChild(notification);
+          }, 300);
+        }, 5000);
+      }
+    }
+
+    new ContactForm();
+
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.contact-method, .availability-status').forEach(element => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(30px)';
+      element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(element);
+    });
+
+    const formSection = document.querySelector('.contact-form-section');
+    formSection.addEventListener('mousemove', (e) => {
+      const rect = formSection.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      formSection.style.background = `
+        radial-gradient(circle at ${x}% ${y}%,
+        rgba(183, 255, 90, 0.15) 0%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.08) 100%)
+      `;
+    });
+    formSection.addEventListener('mouseleave', () => {
+      formSection.style.background = 'var(--glass-bg)';
+    });
+  </script>
+</body>
+</html>

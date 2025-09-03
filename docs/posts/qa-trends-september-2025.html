@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QA Trends: Stable Automation in the Age of AI (Sept 2025) — TestGhost</title>
+  <meta name="description" content="Teams want AI to speed QA without breaking trust. Here’s what’s actually working, and the guardrails that keep results reliable in CI/CD." />
+  <link rel="icon" href="../assets/img/testghost_favicon.png" />
+
+  <!-- Core site styles -->
+  <link rel="stylesheet" href="../assets/css/style.css?v=2" />
+  <link rel="stylesheet" href="../assets/css/_ghost.css?v=2" />
+
+  <!-- Page styles (compact hero) -->
+  <style>
+    :root { --line:#1e2626; }
+    body{
+      background:
+        radial-gradient(900px 380px at 50% -10%, rgba(183,255,90,.08), transparent 60%),
+        var(--bg);
+    }
+    header{ background: rgba(7,11,11,.85) !important; backdrop-filter: blur(20px) saturate(180%); border-bottom:1px solid rgba(183,255,90,.3); }
+    footer{ background: rgba(7,11,11,.85) !important; border-top:1px solid rgba(183,255,90,.3); }
+
+    /* shared narrow column so hero aligns with article text */
+    .wrap.narrow{ max-width: 880px; }
+
+    /* ===== HERO (stacked + compact) ===== */
+    .post-hero{
+      border-bottom:1px solid var(--line);
+      padding: 14px 0 10px; /* tight */
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0) 55%);
+    }
+    .post-hero .narrow{
+      display:block;
+      text-align:left;
+    }
+    .post-brand{
+      display:flex; justify-content:center;
+    }
+    .post-brand img{
+      height: clamp(120px, 18vw, 180px);
+      display:block;
+      margin: 4px auto 6px;
+    }
+
+    .crumb{
+      margin: 0 auto 6px;
+      max-width: 100%;
+      font-size: 13px;
+      color: var(--muted);
+      text-align:center;
+    }
+    .crumb a{ color: var(--glow); text-decoration: none; }
+    .crumb a:hover{ text-decoration: underline; }
+
+    .post-title-wrap{
+      margin: 0 auto 6px;
+    }
+    .post-title-wrap h1{
+      margin: 2px 0 4px;            /* super tight */
+      text-align:center;
+    }
+    .post-title-wrap .lede{
+      color:var(--muted);
+      font-style: italic;            /* always italic tagline */
+      margin: 0 auto 8px;
+      max-width: 70ch;
+      text-align:center;
+    }
+
+    .post-meta{
+      display:flex; flex-wrap:wrap; gap:8px;
+      justify-content:center;
+      margin: 2px 0 6px;
+      color:var(--muted);
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:6px; padding:6px 10px;
+      border-radius:999px; border:1px solid var(--line); background:#0e1414;
+      color:var(--ink); font-size:13px;
+    }
+
+    /* ===== BODY ===== */
+    .post-body{ padding: 18px 0 56px; }
+    .post-card{
+      background:#0e1414; border:1px solid var(--line); border-radius:16px; padding:14px;
+      transition:transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .post-card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(183,255,90,.35);
+      box-shadow: 0 18px 48px rgba(0,0,0,.35);
+    }
+
+    /* author pill (small, not full width) */
+    .author-box{
+      display:flex; align-items:center; gap:10px;
+      margin: 12px auto 0;
+      padding:8px 10px;
+      background:#0e1414; border:1px solid var(--line); border-radius:999px;
+      color:var(--muted); font-size:13px; line-height:1.35;
+      width: fit-content; max-width:100%;
+    }
+    .author-avatar{
+      width:30px; height:30px; border-radius:50%; background:var(--glow); flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; color:#000; font-size:12px;
+    }
+    .author-meta strong{ color:var(--ink); font-weight:600; }
+
+    /* link color = site green */
+    .post-body a{ color:var(--glow); text-decoration:underline; text-underline-offset:2px; }
+
+    @media (max-width: 900px){
+      .wrap.narrow{ padding: 0 14px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="wrap nav">
+      <a href="../index.html" aria-label="TestGhost">
+        <img src="../assets/img/testghost_alt_nav_logo.png" alt="TestGhost logo">
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="../cypressoffer.html">Cypress Package</a></li>
+          <li><a href="../pricing.html">Pricing</a></li>
+          <li><a href="../examples.html">Examples</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li>
+            <a id="navCta" class="cta--nav" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">
+              Book Intro Call
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO: stacked + compact -->
+  <section class="post-hero">
+    <div class="wrap narrow">
+      <div class="post-brand">
+        <!-- your square header art -->
+        <img src="../assets/img/testghost_use_in_blog.png" alt="Shift Left Blog" />
+      </div>
+
+      <div class="crumb">← <a href="../blog.html">All posts</a></div>
+
+      <div class="post-title-wrap">
+        <h1 class="h1" style="text-wrap:balance">QA Trends: Stable Automation in the Age of AI</h1>
+        <p class="lede">
+          Teams want AI to speed QA without tanking trust. Here’s what’s actually working for us,
+          and the guardrails we keep so results are reliable in CI/CD.
+        </p>
+      </div>
+
+      <div class="post-meta">
+        <span class="chip">Sep 2025</span>
+        <span class="chip">5 min read</span>
+        <span class="chip">automation</span>
+        <span class="chip">ai</span>
+        <span class="chip">cicd</span>
+        <span class="chip">strategy</span>
+      </div>
+
+      <!-- compact author pill under meta -->
+      <div class="author-box">
+        <div class="author-avatar">GW</div>
+        <div class="author-meta">
+          <strong>GhostWriter</strong>&nbsp;·&nbsp;<span>Sept 1, 2025 — 10:30 AM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <section class="wrap narrow post-body">
+    <article class="prose">
+      <h2>Where AI helps right now</h2>
+      <p>
+        Short, concrete wins: model-assisted test-data generation, flaky-locators triage, and quick insights on failing logs.
+        Anything that touches assertions or business rules stays human-reviewed.
+      </p>
+
+      <h3>Guardrails we won’t skip</h3>
+      <ul>
+        <li>Selectors by role / testid contracts, not brittle CSS paths.</li>
+        <li>Artifacted results in CI (screens, videos, HAR) for real debuggability.</li>
+        <li>Parallelization tuned for signal first, speed second.</li>
+      </ul>
+
+      <h2>Patterns we’re standardizing</h2>
+      <p>
+        A thin Page Fixture layer, contract tests at the API seam, and smoke + critical-user-journey flows
+        wired to GitHub Actions with artifacts. If you want the starter, see the
+        <a href="../cypressoffer.html">Cypress Automation Starter</a>.
+      </p>
+    </article>
+
+    <div class="post-card" style="margin-top:16px">
+      Want more posts like this—or deeper breakdowns? Visit the
+      <a href="../blog.html">Shift Left Blog →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-left">
+        <img class="footer-logo" src="../assets/img/testghost_footer_logo.png?v=1" alt="TestGhost" />
+        <span>© <span id="y"></span> TestGhost. All rights reserved.</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="https://linkedin.com/in/markrosenthalqa" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/RealMookulus" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

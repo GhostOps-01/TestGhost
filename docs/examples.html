@@ -1,9 +1,894 @@
+<!doctype html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="assets/css/style.css">  </head>
-<nav>
-    <a href="index.html">Home</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="examples.html">Examples</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <script src="assets/js/main.js" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Examples & Interactive Demos — TestGhost</title>
+  <meta name="description" content="Experience the power of TestGhost QA automation through interactive demos and real-world examples that showcase our expertise." />
+  <link rel="icon" href="assets/img/testghost_favicon.png" />
+
+  <!-- Core styles -->
+  <link rel="stylesheet" href="assets/css/style.css?v=2" />
+  <link rel="stylesheet" href="assets/css/_ghost.css?v=2" />
+  
+  <!-- Examples page specific styles -->
+  <style>
+    :root {
+      --neon-green: #b7ff5a;
+      --neon-glow: rgba(183, 255, 90, 0.15);
+      --dark-bg: #070b0b;
+      --panel-bg: #0e1414;
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(183, 255, 90, 0.2);
+    }
+
+    body {
+      background: radial-gradient(1200px 600px at 50% -10%, rgba(183,255,90,.08), transparent 60%), var(--dark-bg);
+      overflow-x: hidden;
+    }
+
+    /* Enhanced Glassmorphism Header */
+    header {
+      background: rgba(7, 11, 11, 0.85) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(183, 255, 90, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 80px 0 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at 30% 20%, rgba(183, 255, 90, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(183, 255, 90, 0.08) 0%, transparent 50%);
+      animation: heroGlow 8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes heroGlow {
+      0% { transform: rotate(0deg) scale(1); }
+      100% { transform: rotate(5deg) scale(1.1); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff, var(--neon-green));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes textShimmer {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.2); }
+    }
+
+    /* Epic Animation Container */
+    .demo-theater {
+      position: relative;
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .demo-stage {
+      position: relative;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 40px;
+      backdrop-filter: blur(20px);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    .demo-trigger {
+      position: relative;
+      background: linear-gradient(135deg, var(--neon-green), #9bff45);
+      color: #000;
+      border: none;
+      padding: 20px 40px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 
+        0 0 30px rgba(183, 255, 90, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      margin: 20px auto;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .demo-trigger:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 
+        0 15px 40px rgba(183, 255, 90, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    .demo-trigger:active {
+      transform: translateY(-1px) scale(1.02);
+    }
+
+    /* Animation Stages */
+    .animation-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin: 40px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stage {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 1s ease;
+    }
+
+    .stage.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Stage 1: Code Building */
+    .code-building {
+      background: var(--panel-bg);
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid rgba(183, 255, 90, 0.3);
+      overflow: hidden;
+    }
+
+    .code-lines {
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--neon-green);
+    }
+
+    .code-line {
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: codeReveal 0.3s ease forwards;
+    }
+
+    @keyframes codeReveal {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Stage 2: CI/CD Pipeline */
+    .pipeline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px;
+    }
+
+    .pipeline-step {
+      background: var(--glass-bg);
+      border: 2px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 20px;
+      width: 150px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    .pipeline-step::after {
+      content: "→";
+      position: absolute;
+      right: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--neon-green);
+      font-size: 2rem;
+      animation: pulse 1s infinite;
+    }
+
+    .pipeline-step:last-child::after {
+      display: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* Stage 3: GitHub Success */
+    .github-success {
+      background: linear-gradient(135deg, #1a1e23, #2d333b);
+      border-radius: 16px;
+      padding: 30px;
+      border: 2px solid #28a745;
+      text-align: center;
+    }
+
+    .check-mark {
+      font-size: 4rem;
+      color: #28a745;
+      animation: checkSuccess 1s ease;
+    }
+
+    @keyframes checkSuccess {
+      0% { transform: scale(0) rotate(180deg); }
+      50% { transform: scale(1.2) rotate(0deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    /* Stage 4: Chaos Animation */
+    .chaos-stage {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .spinning-element {
+      position: absolute;
+      color: var(--neon-green);
+      font-size: 2rem;
+      animation: chaosSpinning 2s linear infinite;
+    }
+
+    @keyframes chaosSpinning {
+      0% { 
+        transform: rotate(0deg) translateX(100px) rotate(0deg); 
+        opacity: 1;
+      }
+      100% { 
+        transform: rotate(360deg) translateX(100px) rotate(-360deg); 
+        opacity: 0.3;
+      }
+    }
+
+    /* Stage 5: Final Quote */
+    .final-quote {
+      text-align: center;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(183, 255, 90, 0.1), rgba(183, 255, 90, 0.05));
+      border-radius: 20px;
+      border: 2px solid var(--neon-green);
+      box-shadow: 0 0 50px rgba(183, 255, 90, 0.2);
+    }
+
+    .quote-text {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 300;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      color: #fff;
+      opacity: 0;
+      animation: quoteReveal 2s ease forwards;
+    }
+
+    .quote-brand {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--neon-green);
+      text-shadow: 0 0 20px rgba(183, 255, 90, 0.5);
+      opacity: 0;
+      animation: brandReveal 1s ease 1s forwards;
+    }
+
+    @keyframes quoteReveal {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes brandReveal {
+      0% { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Interactive Section */
+    .interactive-playground {
+      margin: 100px 0;
+      padding: 0 20px;
+    }
+
+    .playground-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .playground-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .playground-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      border-color: var(--neon-green);
+    }
+
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: block;
+      color: var(--neon-green);
+    }
+
+    /* Test Suite Viewer */
+    .test-viewer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .test-viewer.active {
+      display: flex;
+    }
+
+    .viewer-content {
+      background: var(--panel-bg);
+      border: 2px solid var(--neon-green);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 800px;
+      height: 80%;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .close-viewer {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--neon-green);
+      font-size: 2rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .close-viewer:hover {
+      transform: scale(1.2);
+    }
+
+    .scrollable-content {
+      height: 100%;
+      overflow-y: auto;
+      padding-right: 20px;
+    }
+
+    /* GitHub Section */
+    .github-section {
+      margin: 80px 0;
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, rgba(183, 255, 90, 0.08), rgba(183, 255, 90, 0.03));
+      border-radius: 30px;
+      border: 1px solid rgba(183, 255, 90, 0.2);
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .github-btn {
+      background: linear-gradient(135deg, #24292e, #1a1e23);
+      color: var(--neon-green);
+      border: 2px solid var(--neon-green);
+      padding: 18px 36px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(183, 255, 90, 0.2);
+    }
+
+    .github-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(183, 255, 90, 0.4);
+      background: linear-gradient(135deg, #2f363d, #24292e);
+    }
+
+    /* Enhanced Footer */
+    footer {
+      background: rgba(7, 11, 11, 0.85) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      border-top: 1px solid rgba(183, 255, 90, 0.3);
+      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .demo-stage {
+        padding: 20px;
+        margin: 0 10px;
+      }
+      
+      .pipeline {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .pipeline-step::after {
+        content: "↓";
+        right: 50%;
+        bottom: -25px;
+        top: auto;
+        transform: translateX(50%);
+      }
+      
+      .playground-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="wrap nav">
+      <a href="index.html" aria-label="TestGhost">
+        <img src="assets/img/testghost_alt_nav_logo.png" alt="TestGhost logo">
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="cypressoffer.html">Cypress Package</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="examples.html" class="active">Examples</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a id="navCta" class="cta--nav" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">
+              Book Intro Call
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>Experience TestGhost in Action</h1>
+      <p class="lead" style="color: var(--muted); max-width: 800px; margin: 0 auto;">
+        Witness the complete QA transformation journey through interactive demos and real-world examples that showcase bulletproof automation strategies.
+      </p>
+    </div>
+  </section>
+
+  <!-- EPIC DEMO THEATER -->
+  <section class="demo-theater">
+    <div class="demo-stage">
+      <h2 style="text-align: center; margin-bottom: 30px; color: var(--neon-green);">
+        The TestGhost Experience
+      </h2>
+      <p style="text-align: center; color: var(--muted); margin-bottom: 40px;">
+        Click below to witness the complete journey from test creation to production confidence
+      </p>
+      
+      <button class="demo-trigger" id="startDemo">
+        🚀 Launch Demo Experience
+      </button>
+
+      <div class="animation-container" id="animationContainer">
+        <!-- Stage 1: Code Building -->
+        <div class="stage code-building" id="stage1">
+          <h3 style="color: var(--neon-green); margin-bottom: 20px;">Building Test Suite...</h3>
+          <div class="code-lines" id="codeLines">
+            <!-- Code will be generated dynamically -->
+          </div>
+        </div>
+
+        <!-- Stage 2: CI/CD Pipeline -->
+        <div class="stage pipeline" id="stage2">
+          <div class="pipeline-step">
+            <div style="color: var(--neon-green); font-size: 2rem;">🔧</div>
+            <div>Build</div>
+          </div>
+          <div class="pipeline-step">
+            <div style="color: var(--neon-green); font-size: 2rem;">🧪</div>
+            <div>Test</div>
+          </div>
+          <div class="pipeline-step">
+            <div style="color: var(--neon-green); font-size: 2rem;">✅</div>
+            <div>Deploy</div>
+          </div>
+        </div>
+
+        <!-- Stage 3: GitHub Success -->
+        <div class="stage github-success" id="stage3">
+          <div class="check-mark">✅</div>
+          <h3 style="color: #28a745;">All Tests Passed!</h3>
+          <p style="color: #fff;">Ready for production deployment</p>
+        </div>
+
+        <!-- Stage 4: Chaos -->
+        <div class="stage chaos-stage" id="stage4">
+          <!-- Spinning elements will be added dynamically -->
+        </div>
+
+        <!-- Stage 5: Final Quote -->
+        <div class="stage final-quote" id="stage5">
+          <div class="quote-text">
+            "When was the last time you felt 100% confident about deploying to production?"
+          </div>
+          <div class="quote-brand">TESTGHOST</div>
+          <p style="color: var(--muted); margin-top: 20px;">
+            Surgical. Scalable. Relentless.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE PLAYGROUND -->
+  <section class="interactive-playground">
+    <div class="wrap">
+      <h2 style="text-align: center; margin-bottom: 60px; color: var(--neon-green);">
+        Interactive Examples
+      </h2>
+      
+      <div class="playground-grid">
+        <div class="playground-card" onclick="openTestViewer()">
+          <span class="card-icon">🧪</span>
+          <h3>Live Test Suite</h3>
+          <p>Explore a fully scaffolded test suite with interactive code examples and real-world scenarios.</p>
+        </div>
+
+        <div class="playground-card" onclick="openPipelineDemo()">
+          <span class="card-icon">⚡</span>
+          <h3>CI/CD Integration</h3>
+          <p>See how TestGhost seamlessly integrates with your deployment pipeline for continuous quality.</p>
+        </div>
+
+        <div class="playground-card" onclick="openReportingDemo()">
+          <span class="card-icon">📊</span>
+          <h3>Smart Reporting</h3>
+          <p>Experience intelligent test reporting with actionable insights and failure analysis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GITHUB SECTION -->
+  <section class="github-section">
+    <h2 style="color: var(--neon-green); margin-bottom: 20px;">
+      Explore Real Examples
+    </h2>
+    <p style="color: var(--muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+      Dive deep into actual TestGhost implementations, complete with code examples, documentation, and best practices.
+    </p>
+    <a href="https://github.com/RealMookulus/testghost" target="_blank" rel="noopener" class="github-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+      </svg>
+      View Examples on GitHub
+    </a>
+  </section>
+
+  <!-- TEST VIEWER MODAL -->
+  <div class="test-viewer" id="testViewer">
+    <div class="viewer-content">
+      <button class="close-viewer" onclick="closeTestViewer()">&times;</button>
+      <h3 style="color: var(--neon-green); margin-bottom: 20px;">Interactive Test Suite</h3>
+      <div class="scrollable-content" id="testContent">
+        <!-- Content will be loaded dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-left">
+        <img class="footer-logo" src="assets/img/testghost_footer_logo.png?v=1" alt="TestGhost" />
+        <span>© <span id="y"></span> TestGhost. All rights reserved.</span>
+      </div>
+  
+      <ul class="footer-links">
+        <li><a href="https://linkedin.com/in/markrosenthalqa" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/RealMookulus" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Epic Demo Animation Sequence
+    let currentStage = 0;
+    const stages = ['stage1', 'stage2', 'stage3', 'stage4', 'stage5'];
+    let demoRunning = false;
+
+    function startEpicDemo() {
+      if (demoRunning) return;
+      demoRunning = true;
+      currentStage = 0;
+      
+      // Reset all stages
+      stages.forEach(stageId => {
+        document.getElementById(stageId).classList.remove('active');
+      });
+
+      // Start the sequence
+      setTimeout(() => showStage1(), 500);
+    }
+
+    function showStage1() {
+      document.getElementById('stage1').classList.add('active');
+      
+      // Generate code lines with typing effect
+      const codeLines = [
+        "describe('User Authentication', () => {",
+        "  it('should login with valid credentials', () => {",
+        "    cy.visit('/login');",
+        "    cy.get('[data-testid=\"email\"]').type('user@test.com');",
+        "    cy.get('[data-testid=\"password\"]').type('password123');",
+        "    cy.get('[data-testid=\"login-btn\"]').click();",
+        "    cy.url().should('include', '/dashboard');",
+        "    cy.get('[data-testid=\"welcome\"]').should('be.visible');",
+        "  });",
+        "});"
+      ];
+
+      const container = document.getElementById('codeLines');
+      container.innerHTML = '';
+      
+      codeLines.forEach((line, index) => {
+        setTimeout(() => {
+          const lineEl = document.createElement('div');
+          lineEl.className = 'code-line';
+          lineEl.textContent = line;
+          lineEl.style.animationDelay = '0s';
+          container.appendChild(lineEl);
+        }, index * 200);
+      });
+
+      setTimeout(() => {
+        document.getElementById('stage1').classList.remove('active');
+        showStage2();
+      }, 3000);
+    }
+
+    function showStage2() {
+      document.getElementById('stage2').classList.add('active');
+      
+      setTimeout(() => {
+        document.getElementById('stage2').classList.remove('active');
+        showStage3();
+      }, 2500);
+    }
+
+    function showStage3() {
+      document.getElementById('stage3').classList.add('active');
+      
+      setTimeout(() => {
+        document.getElementById('stage3').classList.remove('active');
+        showStage4();
+      }, 2000);
+    }
+
+    function showStage4() {
+      const stage4 = document.getElementById('stage4');
+      stage4.classList.add('active');
+      
+      // Create chaos elements
+      const symbols = ['⚡', '🔧', '⚙️', '🚀', '💻', '🧪', '⭐', '💫'];
+      stage4.innerHTML = '';
+      
+      symbols.forEach((symbol, index) => {
+        const element = document.createElement('div');
+        element.className = 'spinning-element';
+        element.textContent = symbol;
+        element.style.top = Math.random() * 80 + '%';
+        element.style.left = Math.random() * 80 + '%';
+        element.style.animationDelay = index * 0.2 + 's';
+        stage4.appendChild(element);
+      });
+
+      setTimeout(() => {
+        stage4.classList.remove('active');
+        showStage5();
+      }, 3000);
+    }
+
+    function showStage5() {
+      document.getElementById('stage5').classList.add('active');
+      
+      setTimeout(() => {
+        demoRunning = false;
+        // Keep stage 5 visible for a while
+        setTimeout(() => {
+          document.getElementById('stage5').classList.remove('active');
+        }, 8000);
+      }, 2000);
+    }
+
+    // Event listeners
+    document.getElementById('startDemo').addEventListener('click', startEpicDemo);
+
+    // Interactive Functions
+    function openTestViewer() {
+      const testContent = `
+        <div style="font-family: Monaco, monospace; font-size: 14px; line-height: 1.6;">
+          <h4 style="color: var(--neon-green);">E2E Test Suite Example</h4>
+          <div style="background: #1a1a1a; padding: 20px; border-radius: 10px; margin: 20px 0;">
+            <pre style="color: #f8f8f2; margin: 0;">
+// Comprehensive E2E Test Suite
+describe('E-commerce User Journey', () => {
+  beforeEach(() => {
+    cy.visit('/');
+    cy.clearCookies();
+    cy.clearLocalStorage();
+  });
+
+  it('Complete purchase flow', () => {
+    // Product Discovery
+    cy.get('[data-testid="search-input"]')
+      .type('laptop');
+    
+    cy.get('[data-testid="search-button"]')
+      .click();
+    
+    // Product Selection
+    cy.get('[data-testid="product-card"]')
+      .first()
+      .click();
+    
+    cy.get('[data-testid="add-to-cart"]')
+      .click();
+    
+    // Checkout Process
+    cy.get('[data-testid="cart-icon"]')
+      .click();
+    
+    cy.get('[data-testid="checkout-button"]')
+      .click();
+    
+    // Form Validation
+    cy.get('[data-testid="email-input"]')
+      .type('test@example.com');
+    
+    cy.get('[data-testid="payment-submit"]')
+      .click();
+    
+    // Success Verification
+    cy.url().should('include', '/success');
+    cy.get('[data-testid="order-confirmation"]')
+      .should('contain', 'Order Complete');
+  });
+
+  it('Error handling scenarios', () => {
+    // Test payment failures
+    cy.intercept('POST', '/api/payment', {
+      statusCode: 400,
+      body: { error: 'Payment failed' }
+    });
+    
+    // ... continued testing
+  });
+});
+            </pre>
+          </div>
+          <h4 style="color: var(--neon-green);">API Test Integration</h4>
+          <div style="background: #1a1a1a; padding: 20px; border-radius: 10px; margin: 20px 0;">
+            <pre style="color: #f8f8f2; margin: 0;">
+// API Contract Testing
+describe('API Endpoints', () => {
+  it('validates user authentication API', () => {
+    cy.request({
+      method: 'POST',
+      url: '/api/auth/login',
+      body: {
+        email: 'test@example.com',
+        password: 'password123'
+      }
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body).to.have.property('token');
+      expect(response.body.user).to.have.property('id');
+    });
+  });
+});
+            </pre>
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('testContent').innerHTML = testContent;
+      document.getElementById('testViewer').classList.add('active');
+    }
+
+    function closeTestViewer() {
+      document.getElementById('testViewer').classList.remove('active');
+    }
+
+    function openPipelineDemo() {
+      alert('🚀 CI/CD Pipeline Demo - This would show an interactive pipeline visualization with real-time deployment stages!');
+    }
+
+    function openReportingDemo() {
+      alert('📊 Smart Reporting Demo - This would display interactive test reports with failure analysis and trends!');
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('testViewer').addEventListener('click', (e) => {
+      if (e.target.id === 'testViewer') {
+        closeTestViewer();
+      }
+    });
+
+    // Enhanced scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.playground-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>

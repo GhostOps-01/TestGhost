@@ -11,6 +11,46 @@
   <link rel="stylesheet" href="assets/css/style.css?v=1" />
   <link rel="stylesheet" href="assets/css/_ghost.css?v=1" />
 
+  <!-- Enhanced Glassmorphism for Homepage -->
+  <style>
+    /* Enhanced glassmorphism effects */
+    header {
+      background: rgba(7, 11, 11, 0.85) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(183, 255, 90, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    
+    footer {
+      background: rgba(7, 11, 11, 0.85) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      border-top: 1px solid rgba(183, 255, 90, 0.3);
+      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
+    }
+    
+    .panel {
+      background: rgba(255, 255, 255, 0.08) !important;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(183, 255, 90, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .panel:hover {
+      transform: translateY(-3px);
+      border-color: rgba(183, 255, 90, 0.4);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+    
+    .cta, .ghost-btn {
+      backdrop-filter: blur(10px) !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+    
+    .cta:hover, .ghost-btn:hover {
+      transform: translateY(-2px) !important;
+    }
+  </style>
+
   <!-- Minimal critical CSS so it looks good even if your bundles are cached -->
   <style>
     :root{
@@ -72,26 +112,29 @@
 
 <body>
   <!-- HEADER / NAV -->
-  <header>
-    <div class="wrap nav">
-      <a href="/" aria-label="TestGhost">
-        <img src="assets/img/testghost_alt_nav_logo.png" alt="TestGhost logo">
-      </a>
-      <nav aria-label="Primary">
-        <ul>
-          <li><a href="cypressoffer.html">Cypress Package</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="examples.html">Examples</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li>
-            <a id="navCta" class="cta--nav" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">
-              Book Intro Call
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+ <!-- HEADER / NAV -->
+<header>
+  <div class="wrap nav">
+    <a href="/" aria-label="TestGhost">
+      <img src="assets/img/testghost_alt_nav_logo.png" alt="TestGhost logo">
+    </a>
+
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="cypressoffer.html">Cypress Package</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="examples.html">Examples</a></li>
+        <li><a href="contact.html">Contact</a></li>
+
+        <li>
+          <a id="navCta" class="cta--nav" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">
+            Book Intro Call
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
   <!-- HERO -->
   <section class="hero">
@@ -180,6 +223,50 @@
     </div>
   </section>
 
+ <!-- SHIFT LEFT BLOG SPOTLIGHT -->
+<section class="section blog-spotlight">
+  <div class="wrap">
+    <div class="panel">
+      <div class="grid-2">
+        <!-- Left: headline + practical line + article -->
+        <div>
+          <h2 class="h2">SHIFT LEFT BLOG</h2>
+          <p class="lead" style="margin:8px 0 18px; color:var(--muted)">
+            Practical insights in modern QA—automation that lasts, CI/CD that signals, and AI that augments without breaking trust.
+          </p>
+
+          <div class="spotlight-article panel">
+            <div class="spotlight-meta" style="color:var(--muted); margin-bottom:10px">
+              Sep 2025 • 5 min read
+            </div>
+            <h3 style="margin:0 0 10px; font-size:22px">
+              <a href="blog.html#emerging-patterns" style="color:var(--ink)">
+                Emerging Patterns: Reliable Automation with Small Teams
+              </a>
+            </h3>
+            <p class="lead" style="font-size:15px; margin:0 0 16px; color:var(--muted)">
+              What we’re standardizing in Cypress/Playwright to keep suites fast, readable, and low-flake—plus how we wire results into CI for real signal.
+            </p>
+
+            <div class="cta-row">
+              <a class="cta" href="blog.html#emerging-patterns">Read the article</a>
+              <a class="ghost-btn" href="blog.html">View all posts</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: square image -->
+        <div class="spotlight-media panel">
+          <img
+            src="assets/img/testghost_square_homepage.png"
+            alt="Shift Left Blog"
+            class="blog-square-img"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
   <!-- CTA -->
   <section class="section">
     <div class="wrap">

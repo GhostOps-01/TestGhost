@@ -818,3 +818,653 @@ footer.site-footer a {
 footer.site-footer a:hover {
   text-shadow: 0 0 6px var(--glow);
 }
+
+/* Shift Left Blog nav badge */
+.nav li.nav-blog { display:flex; align-items:center; }
+
+.nav li.nav-blog img {
+  height: 28px;       /* keeps it tidy next to text links */
+  width: auto;
+  display: block;
+  translate: 0 0;
+  filter: drop-shadow(0 0 0 rgba(183,255,90,0));
+  transition: transform .15s ease, filter .15s ease, opacity .15s ease;
+  opacity: .95;
+}
+
+@media (min-width: 900px){
+  .nav li.nav-blog img { height: 32px; }
+}
+
+.nav li.nav-blog a:hover img,
+.nav li.nav-blog a:focus-visible img {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 0 10px rgba(183,255,90,.35));
+  opacity: 1;
+}
+
+/* optional: mark it active when on blog.html */
+body.blog .nav li.nav-blog img {
+  filter: drop-shadow(0 0 12px rgba(183,255,90,.5));
+  opacity: 1;
+}
+
+/* ===== NAV TUNING (keep CTA visible) ===== */
+.nav { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.nav > a { flex:0 0 auto; }         /* logo */
+.nav > nav { flex:1 1 auto; }       /* let the link list flex */
+.nav ul { display:flex; align-items:center; gap:16px; margin:0; padding:0; list-style:none; flex-wrap:nowrap; }
+.nav a { white-space:nowrap; }
+
+/* CTA a touch smaller so it fits */
+#navCta { padding:10px 14px; font-size:.95rem; }
+
+/* Blog badge */
+.nav li.nav-blog { display:flex; align-items:center; }
+.nav li.nav-blog img { height:28px; width:auto; display:block; }
+.nav li.nav-blog .label { display:none; }
+
+/* Medium screens: tighten gaps, shrink badge & CTA slightly */
+@media (max-width: 1200px) {
+  .nav ul { gap:12px; }
+  #navCta { padding:8px 12px; font-size:.9rem; }
+  .nav li.nav-blog img { height:22px; }
+}
+
+/* Smaller screens: swap image for text pill to save space */
+@media (max-width: 1024px) {
+  .nav { flex-wrap:wrap; row-gap:8px; }
+  .nav > nav { width:100%; }
+  .nav ul { justify-content:flex-end; }
+
+  .nav li.nav-blog img { display:none; }
+  .nav li.nav-blog .label {
+    display:inline-block;
+    padding:8px 10px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    color:var(--glow);
+    font-weight:600;
+    line-height:1;
+  }
+}
+
+/* --- Nav tidy for blog item + keep CTA visible --- */
+.wrap.nav nav ul{
+  display:flex;
+  align-items:center;
+  gap:14px;              /* was big; tighten so CTA fits */
+  list-style:none;
+  margin:0;
+  padding:0;
+  flex-wrap:nowrap;      /* prevent wrapping that hides CTA */
+}
+
+.nav a{
+  color:var(--ink);
+  text-decoration:none;
+  opacity:.95;
+}
+.nav a:hover,
+.nav a.active{           /* make active/hover green */
+  color:var(--glow);
+}
+
+/* Blog pill */
+.nav-blog a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  line-height:1;
+  padding:6px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  background:rgba(255,255,255,0.03);
+}
+.nav-blog a:hover{
+  transform:translateY(-1px);
+  border-color:rgba(183,255,90,.45);
+  box-shadow:0 0 0 6px rgba(183,255,90,.08);
+}
+
+.nav-blog img{
+  height:18px;           /* compact logo so it doesn’t shove items */
+  width:auto;
+  display:block;
+}
+.nav-blog .label{
+  font-weight:700;
+  color:var(--glow);
+  white-space:nowrap;
+}
+
+/* Save space earlier on smaller screens: hide the text label first */
+@media (max-width:1280px){
+  .wrap.nav nav ul{ gap:10px; }
+  .nav-blog .label{ display:none; }
+}
+
+/* Slightly shrink the icon on tight layouts */
+@media (max-width:1024px){
+  .nav-blog img{ height:16px; }
+}
+
+/* --- Shift Left Blog spotlight --- */
+.blog-spotlight{
+  background:
+    radial-gradient(900px 420px at 10% -10%, rgba(183,255,90,.06), transparent 55%),
+    radial-gradient(900px 420px at 95% 110%, rgba(183,255,90,.05), transparent 55%),
+    var(--bg);
+}
+
+.blog-head{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:18px;
+}
+
+.blog-badge{
+  height:40px; width:auto; display:block;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.25));
+}
+
+.blog-head-copy{ flex:1; }
+.blog-head-copy h2{ margin:0 0 6px; }
+.blog-head-copy .lead{ margin:0; color:var(--muted); }
+
+.blog-grid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:16px;
+}
+
+.blog-card{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(10px);
+  border-radius:16px;
+  padding:18px;
+  box-shadow: 0 16px 32px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.blog-meta{
+  color:var(--muted);
+  font-size:.9rem;
+  margin-bottom:6px;
+}
+
+.blog-title{ margin:0 0 8px; font-size:20px; }
+.blog-excerpt{ margin:0 0 12px; color:var(--muted); }
+
+.blog-list{
+  border:1px solid var(--line);
+  background: var(--panel);
+  border-radius:16px;
+  padding:16px;
+}
+.blog-list h4{ margin:0 0 10px; }
+.blog-list ul{ list-style:none; margin:0; padding:0; display:grid; gap:8px; }
+.blog-list a{ color:var(--glow); }
+
+/* mobile */
+@media (max-width: 960px){
+  .blog-head{ flex-direction:column; text-align:center; }
+  .blog-grid{ grid-template-columns: 1fr; }
+  .blog-badge{ height:34px; }
+}
+
+/* --- Shift Left Blog spotlight --- */
+.blog-spotlight{
+  background:
+    radial-gradient(900px 420px at 10% -10%, rgba(183,255,90,.06), transparent 55%),
+    radial-gradient(900px 420px at 95% 110%, rgba(183,255,90,.05), transparent 55%),
+    var(--bg);
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.blog-head{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  margin-bottom:28px;
+}
+
+.blog-badge{
+  height:64px;   /* bigger logo */
+  width:auto;
+  display:block;
+  filter: drop-shadow(0 3px 10px rgba(0,0,0,.35));
+}
+
+.blog-head-copy{ flex:1; }
+.blog-head-copy h2{ margin:0 0 8px; font-size:1.8rem; }
+.blog-head-copy .lead{ margin:0; color:var(--muted); }
+
+.blog-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:20px;
+}
+
+.blog-card{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(10px);
+  border-radius:16px;
+  padding:22px;
+  box-shadow: 0 18px 32px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.blog-meta{
+  color:var(--muted);
+  font-size:.9rem;
+  margin-bottom:6px;
+}
+
+.blog-title{ margin:0 0 8px; font-size:22px; }
+.blog-excerpt{ margin:0 0 14px; color:var(--muted); }
+
+.blog-footer{
+  margin-top:20px;
+  text-align:center;
+}
+
+.blog-footer .ghost-btn{
+  padding:10px 22px;
+  font-size:1rem;
+}
+
+/* mobile */
+@media (max-width: 960px){
+  .blog-head{ flex-direction:column; text-align:center; gap:12px; }
+  .blog-badge{ height:54px; }
+}
+
+.blog-post-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(183, 255, 90, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.blog-post-card:hover {
+  border-color: var(--neon-green);
+  box-shadow:
+    0 0 15px rgba(183, 255, 90, 0.3),
+    0 20px 50px rgba(0, 0, 0, 0.6);
+  transform: translateY(-6px);
+}
+
+.blog-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.blog-logo {
+  max-width: 260px;  /* make logo bigger */
+  height: auto;
+  flex-shrink: 0;
+}
+
+.blog-intro {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 700px;
+}
+
+.blog-header-centered {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.blog-header-img {
+  max-width: 420px;  /* tweak size as needed */
+  height: auto;
+  display: inline-block;
+}
+
+.blog-header-centered {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.blog-header-img {
+  max-width: 700px;   /* bump this up to make it much larger */
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+.blog-post-card {
+  background: var(--panel-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 40px;   /* add left + right breathing room */
+  margin: 0 auto;
+  max-width: 900px; /* keeps it from going wall-to-wall */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+
+.blog-post-card:hover {
+  border-color: var(--neon-green);
+  box-shadow: 0 0 25px rgba(183, 255, 90, 0.5);
+}
+
+.blog-header-centered {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.blog-header-img {
+  max-width: 700px;   /* you can tweak if it feels too big */
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+.blog-subtitle {
+  margin-top: 6px; /* tight spacing under the image */
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* Blog spotlight layout */
+.blog-spotlight .panel {
+  background: var(--panel);
+}
+
+.blog-spotlight .spotlight-article {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.blog-spotlight .spotlight-media {
+  background: #0f1414;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  box-shadow: 0 6px 26px rgba(0,0,0,.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-spotlight .spotlight-media:hover {
+  transform: translateY(-2px);
+  border-color: rgba(183,255,90,.45);
+  box-shadow:
+    0 0 0 6px rgba(183,255,90,.10),
+    0 14px 42px rgba(0,0,0,.45);
+}
+
+.blog-spotlight .blog-square-img {
+  width: 100%;
+  max-width: 280px;  /* keeps it compact */
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Headline matches package card size */
+.blog-spotlight .h2 {
+  font-size: 28px;
+  margin: 0 0 6px;
+}
+
+/* Compact spacing */
+.blog-spotlight .wrap { padding-top: 18px; }
+.blog-spotlight .grid-2 { align-items: center; gap: 28px; }
+
+/* Stack on mobile */
+@media (max-width: 960px){
+  .blog-spotlight .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .blog-spotlight .spotlight-media { justify-content: center; }
+}
+
+.blog-spotlight .spotlight-media {
+  background: #0f1414;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  box-shadow: 0 6px 26px rgba(0,0,0,.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1;   /* 🔥 force square */
+  max-width: 320px;      /* keeps it neat */
+  margin: auto;          /* center if smaller than column */
+}
+
+.blog-spotlight .blog-square-img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: contain;   /* preserves square feel */
+}
+
+/* Make heading larger */
+.blog-spotlight .blog-heading {
+  font-size: 2rem;       /* bigger than normal */
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* Tilt effect */
+.blog-spotlight .spotlight-media.tilt {
+  transform: rotate(-8deg);   /* adjust tilt angle */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #0f1414;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.35);
+  aspect-ratio: 1 / 1;
+  max-width: 320px;
+  margin: auto;
+}
+
+/* Add glow on hover */
+.blog-spotlight .spotlight-media.tilt:hover {
+  transform: rotate(-8deg) scale(1.03);  /* tilt + zoom */
+  box-shadow: 0 0 20px var(--glow);
+}
+
+/* Heading size */
+.blog-spotlight .blog-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* Container stays square */
+.blog-spotlight .spotlight-media {
+  background: #0f1414;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  max-width: 320px;
+  margin: auto;
+}
+
+/* Tilt the image itself */
+.blog-spotlight .tilt-img {
+  transform: rotate(-8deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Glow & zoom on hover */
+.blog-spotlight .tilt-img:hover {
+  transform: rotate(-100deg) scale(1.05);
+  box-shadow: 0 0 20px var(--glow);
+}
+
+/* Tilted container */
+.blog-spotlight .tilt-container {
+  background: #0f1414;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  max-width: 320px;
+  margin: auto;
+
+  /* permanent tilt */
+  transform: rotate(-8deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Glow + zoom on hover */
+.blog-spotlight .tilt-container:hover {
+  transform: rotate(-8deg) scale(1.05);
+  box-shadow: 0 0 25px var(--glow);
+}
+
+/* Image stays normal inside */
+.blog-spotlight .blog-square-img {
+  border-radius: 10px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================
+   SHIFT LEFT BLOG – robust overrides
+   (place at end of style.css)
+   ========================= */
+
+/* Tidy the spotlight section spacing/background */
+.blog-spotlight{
+  padding:56px 0;
+  background:
+    radial-gradient(900px 420px at 10% -10%, rgba(183,255,90,.06), transparent 55%),
+    radial-gradient(900px 420px at 95% 110%, rgba(183,255,90,.05), transparent 55%),
+    var(--bg, #0b0f12);
+}
+
+/* Two-column layout on desktop, stacks on mobile */
+.blog-spotlight .grid-2{
+  display:grid;
+  grid-template-columns: 1.35fr .9fr;
+  gap:24px;
+  align-items:center;
+}
+@media (max-width: 960px){
+  .blog-spotlight .grid-2{ grid-template-columns:1fr; }
+}
+
+/* Article card (left) keeps your current style but with comfy padding */
+.blog-spotlight .spotlight-article{
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--line, rgba(255,255,255,.09));
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 18px 32px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+/* ======= TILTED IMAGE FRAME (right) ======= */
+
+/* Square container that tilts as a unit (frame + image) */
+.blog-spotlight .spotlight-media{
+  /* make it a square frame */
+  aspect-ratio: 1 / 1;
+  max-width: 420px;
+  width: min(420px, 92%);
+  margin: 0 auto;
+
+  /* frame styling */
+  background: #0f1414;
+  border: 1px solid var(--line, rgba(255,255,255,.09));
+  border-radius: 14px;
+  padding: 14px;
+
+  /* depth + smooth transitions */
+  box-shadow: 0 6px 26px rgba(0,0,0,.35);
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+/* The *tilt* — force it to win over older rules */
+.blog-spotlight .spotlight-media.tilt{
+  transform: rotate(-12deg) !important;
+}
+
+/* Hover: keep the same tilt, add a tiny zoom + neon aura */
+.blog-spotlight .spotlight-media.tilt:hover{
+  transform: rotate(-12deg) scale(1.03) !important;
+  border-color: rgba(183,255,90,.5);
+  box-shadow:
+    0 0 0 8px rgba(183,255,90,.08),
+    0 22px 50px rgba(0,0,0,.5),
+    0 0 28px rgba(183,255,90,.35);
+}
+
+/* Image inside the frame fills nicely without adding its own rotation */
+.blog-spotlight .spotlight-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 10px;
+  transform: none !important;   /* neutralize any previous rotate on the img */
+}
+
+/* Headline sizing for "SHIFT LEFT BLOG" to match your package card */
+.blog-spotlight .blog-heading{
+  font: 800 clamp(22px, 2.2vw, 32px)/1.15 "Space Grotesk", Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  margin: 0 0 8px;
+}
+
+/* Keep the “Practical insights…” line snug under the heading */
+.blog-spotlight .blog-intro{
+  color: var(--muted, #9aa5b1);
+  margin: 0 0 10px;
+}
+
+/* Button row */
+.blog-spotlight .buttons{ display:flex; gap:12px; flex-wrap:wrap; }
+
+/* Make the blog hero image bigger */
+.blog-hero img {
+  height: 100px;   /* adjust as needed */
+  display: block;
+  margin: 0 auto 12px;
+}
+
+/* Global link color override for blog page */
+a {
+  color: var(--neon);
+  text-decoration: none;
+  transition: color 0.15s ease, text-decoration 0.15s ease;
+}
+
+a:hover,
+a:focus {
+  color: #d4ff92; /* slightly lighter green for hover */
+  text-decoration: underline;
+}

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cypress Selectors That Never Break — TestGhost</title>
+  <meta name="description" content="The heuristics that keep your Cypress selectors stable across redesigns: roles, testid contracts, DOM contracts, and when to reach for data attributes." />
+  <link rel="icon" href="../assets/img/testghost_favicon.png" />
+
+  <!-- Core site styles -->
+  <link rel="stylesheet" href="../assets/css/style.css?v=2" />
+  <link rel="stylesheet" href="../assets/css/_ghost.css?v=2" />
+
+  <!-- Page styles (compact hero, same as the other post) -->
+  <style>
+    :root { --line:#1e2626; }
+    body{
+      background:
+        radial-gradient(900px 380px at 50% -10%, rgba(183,255,90,.08), transparent 60%),
+        var(--bg);
+    }
+    header{ background: rgba(7,11,11,.85) !important; backdrop-filter: blur(20px) saturate(180%); border-bottom:1px solid rgba(183,255,90,.3); }
+    footer{ background: rgba(7,11,11,.85) !important; border-top:1px solid rgba(183,255,90,.3); }
+
+    .wrap.narrow{ max-width: 880px; }
+
+    /* ===== HERO (stacked + compact) ===== */
+    .post-hero{
+      border-bottom:1px solid var(--line);
+      padding: 14px 0 10px;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0) 55%);
+    }
+    .post-hero .narrow{ display:block; text-align:left; }
+
+    .post-brand{ display:flex; justify-content:center; }
+    .post-brand img{
+      height: clamp(120px, 18vw, 180px);
+      display:block;
+      margin: 4px auto 6px;
+    }
+
+    .crumb{
+      margin: 0 auto 6px;
+      font-size: 13px;
+      color: var(--muted);
+      text-align:center;
+    }
+    .crumb a{ color: var(--glow); text-decoration: none; }
+    .crumb a:hover{ text-decoration: underline; }
+
+    .post-title-wrap{ margin: 0 auto 6px; }
+    .post-title-wrap h1{
+      margin: 2px 0 4px;
+      text-align:center;
+    }
+    .post-title-wrap .lede{
+      color:var(--muted);
+      font-style: italic;     /* always italic tagline */
+      margin: 0 auto 8px;
+      max-width: 70ch;
+      text-align:center;
+    }
+
+    .post-meta{
+      display:flex; flex-wrap:wrap; gap:8px;
+      justify-content:center;
+      margin: 2px 0 6px;
+      color:var(--muted);
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:6px; padding:6px 10px;
+      border-radius:999px; border:1px solid var(--line); background:#0e1414;
+      color:var(--ink); font-size:13px;
+    }
+
+    /* ===== BODY ===== */
+    .post-body{ padding: 18px 0 56px; }
+    .post-card{
+      background:#0e1414; border:1px solid var(--line); border-radius:16px; padding:14px;
+      transition:transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .post-card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(183,255,90,.35);
+      box-shadow: 0 18px 48px rgba(0,0,0,.35);
+    }
+
+    /* author pill (small, not full width) */
+    .author-box{
+      display:flex; align-items:center; gap:10px;
+      margin: 12px auto 0;
+      padding:8px 10px;
+      background:#0e1414; border:1px solid var(--line); border-radius:999px;
+      color:var(--muted); font-size:13px; line-height:1.35;
+      width: fit-content; max-width:100%;
+    }
+    .author-avatar{
+      width:30px; height:30px; border-radius:50%; background:var(--glow); flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; color:#000; font-size:12px;
+    }
+    .author-meta strong{ color:var(--ink); font-weight:600; }
+
+    /* link color = site green */
+    .post-body a{ color:var(--glow); text-decoration:underline; text-underline-offset:2px; }
+
+    @media (max-width: 900px){
+      .wrap.narrow{ padding: 0 14px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="wrap nav">
+      <a href="../index.html" aria-label="TestGhost">
+        <img src="../assets/img/testghost_alt_nav_logo.png" alt="TestGhost logo">
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="../cypressoffer.html">Cypress Package</a></li>
+          <li><a href="../pricing.html">Pricing</a></li>
+          <li><a href="../examples.html">Examples</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li>
+            <a id="navCta" class="cta--nav" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">
+              Book Intro Call
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO: stacked + compact -->
+  <section class="post-hero">
+    <div class="wrap narrow">
+      <div class="post-brand">
+        <!-- use whichever hero art you prefer; square works well -->
+        <img src="../assets/img/testghost_use_in_blog.png" alt="Shift Left Blog" />
+      </div>
+
+      <div class="crumb">← <a href="../blog.html">All posts</a></div>
+
+      <div class="post-title-wrap">
+        <h1 class="h1" style="text-wrap:balance">Cypress Selectors That Never Break</h1>
+        <p class="lede">
+          The heuristics I use to keep selectors stable across redesigns — roles, testid contracts,
+          DOM contracts, and when to reach for data attributes.
+        </p>
+      </div>
+
+      <div class="post-meta">
+        <span class="chip">Aug 2025</span>
+        <span class="chip">5 min read</span>
+        <span class="chip">cypress</span>
+        <span class="chip">selectors</span>
+        <span class="chip">stability</span>
+      </div>
+
+      <!-- compact author pill -->
+      <div class="author-box">
+        <div class="author-avatar">GW</div>
+        <div class="author-meta">
+          <strong>GhostWriter</strong>&nbsp;·&nbsp;<span>Aug 24, 2025 — 9:15 AM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <section class="wrap narrow post-body">
+    <article class="prose">
+      <h2>Use the platform: roles first</h2>
+      <p>
+        Prefer <code>getByRole</code> with accessible names. It’s resilient to CSS class churn and
+        maps to how real users experience the UI. If you can’t use roles, fall back to stable
+        attributes you control.
+      </p>
+
+      <h3>TestID contracts (when roles won’t cut it)</h3>
+      <ul>
+        <li>Declare a <code>data-testid</code> contract for elements that lack reliable roles.</li>
+        <li>Keep them semantic (e.g., <code>cart.total</code>, <code>profile.save</code>).</li>
+        <li>Own them in code review—breaking a contract is a breaking change.</li>
+      </ul>
+
+      <h3>DOM contracts: structure over style</h3>
+      <p>
+        If you must select by structure, scope narrowly with a parent contract and select children
+        relative to it. Avoid brittle selectors like <code>.some-class &gt; :nth-child(3)</code>.
+      </p>
+
+      <h2>Make failures debuggable</h2>
+      <p>
+        Always artifact runs in CI—screenshots, videos, and HAR where possible—so flake
+        hunting is data-driven. You’ll fix selectors faster when you can see the failure.
+      </p>
+
+      <h3>When to use pure <code>data-*</code></h3>
+      <p>
+        Prefer them when UI state or labels are dynamic (feature-flags, i18n, user content).
+        Data attributes you own remain stable across copy and layout changes.
+      </p>
+
+      <p style="margin-top:16px">
+        Want a jump-start with the patterns from this post? Check out the
+        <a href="../cypressoffer.html">Cypress Automation Starter</a>.
+      </p>
+    </article>
+
+    <div class="post-card" style="margin-top:16px">
+      Want more posts like this—or deeper breakdowns? Read:
+      <a href="./qa-trends-september-2025.html">QA Trends: Stable Automation in the Age of AI →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-left">
+        <img class="footer-logo" src="../assets/img/testghost_footer_logo.png?v=1" alt="TestGhost" />
+        <span>© <span id="y"></span> TestGhost. All rights reserved.</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="https://linkedin.com/in/markrosenthalqa" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/RealMookulus" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
