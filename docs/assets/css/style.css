@@ -1468,3 +1468,23 @@ a:focus {
   color: #d4ff92; /* slightly lighter green for hover */
   text-decoration: underline;
 }
+  /* --- HOTFIX: cap the Shift Left Blog image on the homepage --- */
+  .blog-spotlight .spotlight-media{
+    display:flex;align-items:center;justify-content:center;
+    padding:18px;
+  }
+  .blog-spotlight .spotlight-media img{
+    width:100%;
+    max-width:360px;         /* <= tweak if you want it larger/smaller */
+    aspect-ratio:1 / 1;
+    height:auto;
+    object-fit:contain;
+    border-radius:18px;
+    box-shadow:0 14px 36px rgba(0,0,0,.45);
+    display:block;
+  }
+  /* keep the card from growing huge */
+  .blog-spotlight .panel{ overflow:hidden; }
+  @media (max-width: 960px){
+    .blog-spotlight .spotlight-media img{ max-width:300px; }
+  }
