@@ -1488,3 +1488,39 @@ a:focus {
   @media (max-width: 960px){
     .blog-spotlight .spotlight-media img{ max-width:300px; }
   }
+
+  /* footer */
+footer.site-footer {
+  background: rgba(7,11,11,.85) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  border-top: 1px solid rgba(183,255,90,.3);
+  box-shadow: 0 -8px 32px rgba(0,0,0,.3);
+  padding: 22px 0;
+  color: var(--muted);
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.footer-logo {
+  height: 28px;
+  display: block;
+  margin-right: 10px;
+}
+.footer-links {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-links a {
+  color: var(--ink);
+  opacity: .85;
+}
+.footer-links a:hover {
+  opacity: 1;
+}

@@ -95,23 +95,27 @@
 
 <body>
   <!-- ============== NAV ============== -->
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="index.html" aria-label="TestGhost home">
-        <img src="assets/img/testghost_favicon.png" alt="TestGhost"/>
-        <span>TESTGHOST</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="examples.html">Examples</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a class="cta" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">Book Intro Call</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+ <!-- ============== NAV ============== -->
+<header>
+  <div class="wrap nav">
+    <a href="index.html" aria-label="TestGhost">
+      <img src="assets/img/testghost_alt_nav_logo.png" alt="TestGhost logo" style="height:44px">
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="cypressoffer.html">Cypress Package</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="examples.html">Examples</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+          <a id="navCta" class="cta--nav" href="https://calendly.com/buildghost-dev/30min" target="_blank" rel="noopener">
+            Book Intro Call
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
   <!-- ============== HERO ============== -->
   <section class="hero">
@@ -256,19 +260,23 @@
   </section>
 
   <!-- ============== FOOTER ============== -->
-  <footer>
-    <div class="wrap foot">
-      <div style="display:flex;align-items:center;gap:10px">
-        <img src="assets/img/testghost_footer_logo.png" alt="TestGhost" />
-        <span>© <span id="y"></span> TestGhost. All rights reserved.</span>
-      </div>
-      <div style="display:flex;gap:14px">
-        <a href="https://linkedin.com/in/markrosenthalqa" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/realmookulus" target="_blank" rel="noopener">GitHub</a>
-        <a href="contact.html">Contact</a>
-      </div>
+  <!-- ============== FOOTER ============== -->
+ <!-- FOOTER -->
+ <footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-left">
+      <img class="footer-logo" src="assets/img/testghost_footer_logo.png?v=1" alt="TestGhost" />
+      <span>© <span id="y"></span> TestGhost. All rights reserved.</span>
     </div>
-  </footer>
+
+    <ul class="footer-links">
+      <li><a href="https://linkedin.com/in/markrosenthalqa" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://github.com/RealMookulus" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
 
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
